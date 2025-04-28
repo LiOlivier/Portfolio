@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body style="background-color: #1F1F1F;" class="text-white">
+
+    <section class="min-h-screen flex flex-col justify-center items-center text-center p-6">
+    <h1 class="text-5xl md:text-7xl font-bold mb-6">
+      Salut, moi c'est <span class="text-indigo-500">Ton Nom</span>.
+    </h1>
+
+    
+  <div>
+    <img src="PHOTO.png" alt="Description de l'image" class="w-full h-auto rounded-lg shadow-lg">
+  </div>
+
+    <h2 class="text-2xl md:text-3xl font-light mb-8">
+      Développeur Web & Créatif
+    </h2>
+    <a href="#projets" class="px-8 py-4 bg-indigo-500 text-white rounded-full hover:bg-indigo-600 transition text-lg">
+      Voir mes projets
+    </a>
+  </section>
+
+
+  <section id="about" class="py-20 px-6 max-w-4xl mx-auto text-center">
+    <h3 class="text-3xl font-bold mb-6">À propos de moi</h3>
+    <p class="text-gray-700">
+      Je suis un passionné de développement web avec un amour pour la création de sites modernes et performants.
+      Je mets un point d'honneur à allier design et performance.
+    </p>
+  </section>
+
+  <section id="projets" class="py-20 px-6 max-w-6xl mx-auto">
+    <h3 class="text-3xl font-bold mb-10 text-center">Mes projets</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="p-6 border rounded-2xl shadow hover:shadow-lg transition">
+        <h4 class="text-xl font-semibold mb-2">SAE S3.01</h4>
+        <p class="text-gray-600">Application</p>
+      </div>
+      <div class="p-6 border rounded-2xl shadow hover:shadow-lg transition">
+        <h4 class="text-xl font-semibold mb-2">SmartSense</h4>
+        <p class="text-gray-600">Application (Dashboard) créer à partir de données envoyer par des capteurs (CO2, Température, Humidité)</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-20 px-6 max-w-4xl mx-auto text-center">
+    <h3 class="text-3xl font-bold mb-6">Contact</h3>
+    <p class="text-gray-700 mb-6">
+      Vous souhaitez me contacter ? Envoyez-moi un e-mail !
+    </p>
+    <a href="mailto:liolivier@gmail.com" class="inline-block px-8 py-4 bg-green-300 text-white rounded-full hover:bg-indigo-600 transition text-lg">
+      Me contacter
+    </a>
+  </section>
+
+</body>
+</html>
