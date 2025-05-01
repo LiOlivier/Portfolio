@@ -1,6 +1,12 @@
-body {
+html, body {
   margin: 0;
-  background: radial-gradient(ellipse at center, #697dc3 0%, #08356C 100%);
+  padding: 0;
+  height: 100%;
   overflow: hidden;
 }
 
+canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
