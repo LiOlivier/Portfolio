@@ -11,7 +11,7 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   1000
 );
-camera.position.set(100, 100, 20)
+camera.position.set(20, 20, 20)
 scene.background = new THREE.Color(0x1C1C1C);
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -23,41 +23,30 @@ let mouseX = 0;
 let mouseY = 0;
 document.addEventListener('mousemove', (event) => {
   mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-  mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+  mouseY = -(event.clientY / window.innerHeight) * 3 + 2;
 });
 
 // Soleil shader
-const sunUniforms = {
-  uTime: { value: 0.0 }
-};
 
-const sunMaterial = new THREE.ShaderMaterial({
-  uniforms: sunUniforms,
-  vertexShader: `
-    varying vec2 vUv;
-    void main() {
-      vUv = uv;
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-    }
-  `,
-  fragmentShader: `
-    uniform float uTime;
-    varying vec2 vUv;
-    void main() {
-      float pulse = 0.5 + 0.5 * sin(uTime + vUv.x * 10.0);
-      vec3 color = mix(vec3(1.0, 0.6, 0.1), vec3(1.0, 1.0, 0.0), pulse);
-      gl_FragColor = vec4(color, 1.0);
-    }
-  `,
-  side: THREE.FrontSide
+
+const textureLoader = new THREE.TextureLoader();
+const sunTexture = textureLoader.load('soleil/SunTexture.jpg');
+
+const sunMaterial = new THREE.MeshBasicMaterial({
+  map: sunTexture,
+  emissive: 0xffaa00,
+  emissiveIntensity: 1.5,
+  metalness: 0.2,
+  roughness: 3,
 });
 
 const sunGeometry = new THREE.SphereGeometry(1, 32, 32);
 const sun = new THREE.Mesh(sunGeometry, sunMaterial);
 scene.add(sun);
 
+
 // Lumières
-const light = new THREE.PointLight(0xffffff, 10);
+const light = new THREE.PointLight(0xffffff, 20);
 light.position.set(2, 3, 5);
 scene.add(light);
 
@@ -117,7 +106,6 @@ function animate()
 {
   requestAnimationFrame(animate);
 
-  sunUniforms.uTime.value += 0.02;
 
   planets.forEach(p =>
   {
@@ -148,7 +136,7 @@ function createStar(x, y, z, scale = 1) {
   scene.add(sprite);
 }
 
-for (let i = 0; i < 500; i++) {
+for (let i = 0; i < 200; i++) {
   const x = (Math.random() - 0.5) * 200;
   const y = (Math.random() - 0.5) * 200;
   const z = (Math.random() - 0.5) * 200;
