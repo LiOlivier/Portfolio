@@ -1,3 +1,23 @@
+// const loadingManager = new THREE.LoadingManager();
+
+// loadingManager.onProgress = function (url, loaded, total) {
+//   const progress = (loaded / total) * 100;
+//   const fill = document.getElementById('progress-fill');
+//   if (fill) fill.style.width = `${progress}%`;
+// };
+
+// loadingManager.onLoad = function () {
+//   const loadingScreen = document.getElementById('loading-screen');
+//   if (loadingScreen) {
+//     loadingScreen.style.opacity = 0;
+//     setTimeout(() => (loadingScreen.style.display = 'none'), 500);
+//   }
+// };
+
+// const textureLoader = new THREE.TextureLoader(loadingManager); // ← important
+
+
+
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
@@ -30,7 +50,7 @@ document.addEventListener('mousemove', (event) => {
 
 
 const textureLoader = new THREE.TextureLoader();
-const sunTexture = textureLoader.load('soleil/SunTexture.jpg');
+const sunTexture = textureLoader.load('texture/SunTexture.jpg');
 
 const sunMaterial = new THREE.MeshBasicMaterial({
   map: sunTexture,
@@ -54,32 +74,50 @@ const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
 scene.add(ambientLight);
 
 //Planètes
-function createPlanet(radius, color, orbitRadius, speed)
-{
+function createPlanet(radius, texturePath, orbitRadius, speed) {
   const geometry = new THREE.SphereGeometry(radius, 32, 32);
-  const material = new THREE.MeshStandardMaterial({ color: color });
-  const mesh = new THREE.Mesh(geometry, material);
+  const texture = new THREE.TextureLoader().load(texturePath);
+  const material = new THREE.MeshStandardMaterial({
+    map: texture
+  });
 
-  mesh.userData =
-  {
+  const mesh = new THREE.Mesh(geometry, material);
+  mesh.userData = {
     angle: 0,
     speed: speed,
     orbitRadius: orbitRadius
   };
 
+  if (orbitRadius === 10)
+    {
+      const ringGeometry = new THREE.RingGeometry(radius * 1.2, radius * 1.8, 64);
+      const ringTexture = new THREE.TextureLoader().load('texture/saturnering.png');
+      ringTexture.wrapS = THREE.RepeatWrapping;
+      ringTexture.wrapT = THREE.RepeatWrapping;
+
+      const ringMaterial = new THREE.MeshBasicMaterial({
+        map: ringTexture,
+        side: THREE.DoubleSide,
+        opacity: 1
+      });
+  
+      const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+      ring.rotation.x = Math.PI / 2;
+      mesh.add(ring);
+    }
   scene.add(mesh);
   return mesh;
 }
 
 const planets = [
-  createPlanet(0.15, 0xb0b0b0, 2, 0.012),   // Mercure
-  createPlanet(0.2,  0xf4c542, 3.5, 0.010), // Vénus
-  createPlanet(0.25, 0x3b82f6, 5, 0.008),   // Terre
-  createPlanet(0.2,  0xff4e2a, 6.5, 0.007), // Mars
-  createPlanet(0.5,  0xffc58a, 8, 0.005),   // Jupiter
-  createPlanet(0.45, 0xfdf5a6, 10, 0.004),  // Saturne
-  createPlanet(0.35, 0x4ee5d1, 12, 0.003),  // Uranus
-  createPlanet(0.3,  0x4361ee, 14, 0.002)   // Neptune
+  createPlanet(0.3, 'texture/mercure.jpg', 2, 0.012),
+  createPlanet(0.4, 'texture/venus.jpg', 3.5, 0.010),
+  createPlanet(0.5, 'texture/terre.jpg', 5, 0.008),
+  createPlanet(0.45, 'texture/mars.jpg', 6.5, 0.007),
+  createPlanet(0.9, 'texture/jupiter.jpg', 8, 0.005),
+  createPlanet(0.85, 'texture/saturne.jpg', 10, 0.004),
+  createPlanet(0.7, 'texture/uranus.jpg', 12, 0.003),
+  createPlanet(0.6, 'texture/neptune.jpg', 14, 0.002)
 ];
 
 // Orbites
