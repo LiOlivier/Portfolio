@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Monoton&family=Playwrite+DK+Loopet:wght@100..400&family=Sacramento&display=swap');
+
 *{
   color: rgba(194, 191, 191, 0.87);
+
 }
 
 html, body {
@@ -25,6 +28,15 @@ canvas {
   font-family: 'Arial', sans-serif;
   font-size: 3vmax;
   margin: ;
+}
+
+h1{
+  word-spacing: 8px;
+  letter-spacing: ;
+  font-size: 50px;
+  padding: 5px 0;
+  font-family: Monoton;
+  font-weight: 300;
 }
 
 /* Loading Screen
@@ -84,3 +96,30 @@ canvas {
   20%  { opacity: 1; }
   100% { opacity: 0; }
 } */
+
+#v {
+  position: absolute;
+  top: 87%;
+  right: 46.5%;
+  font-size: 1.5rem;
+  padding: 15px 22px;
+  background-color: #ffffff20;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 1000;
+  border-radius: 50px;
+  transition: background-color 0.3s;
+  font-family: Monoton;
+  font-size: 20;
+  animation: bounce;
+}
+
+#v:hover {
+  background-color: #ffffff50;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 10px); }
+}
