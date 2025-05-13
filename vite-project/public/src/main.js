@@ -91,7 +91,7 @@ function createPlanet(radius, texturePath, orbitRadius, speed) {
   if (orbitRadius === 10)
     {
       const ringGeometry = new THREE.RingGeometry(radius * 1.2, radius * 1.8, 64);
-      const ringTexture = new THREE.TextureLoader().load('texture/saturnering.png');
+      const ringTexture = new THREE.TextureLoader().load('./texture/saturnering.png');
       ringTexture.wrapS = THREE.RepeatWrapping;
       ringTexture.wrapT = THREE.RepeatWrapping;
 
@@ -110,14 +110,14 @@ function createPlanet(radius, texturePath, orbitRadius, speed) {
 }
 
 const planets = [
-  createPlanet(0.3, 'texture/mercure.jpg', 2, 0.012),
-  createPlanet(0.4, 'texture/venus.jpg', 3.5, 0.010),
-  createPlanet(0.5, 'texture/terre.jpg', 5, 0.008),
-  createPlanet(0.45, 'texture/mars.jpg', 6.5, 0.007),
-  createPlanet(0.9, 'texture/jupiter.jpg', 8, 0.005),
-  createPlanet(0.85, 'texture/saturne.jpg', 10, 0.004),
-  createPlanet(0.7, 'texture/uranus.jpg', 12, 0.003),
-  createPlanet(0.6, 'texture/neptune.jpg', 14, 0.002)
+  createPlanet(0.3, './texture/mercure.jpg', 2, 0.012),
+  createPlanet(0.4, './texture/venus.jpg', 3.5, 0.010),
+  createPlanet(0.5, './texture/terre.jpg', 5, 0.008),
+  createPlanet(0.45, './texture/mars.jpg', 6.5, 0.007),
+  createPlanet(0.9, './texture/jupiter.jpg', 8, 0.005),
+  createPlanet(0.85, './texture/saturne.jpg', 10, 0.004),
+  createPlanet(0.7, './texture/uranus.jpg', 12, 0.003),
+  createPlanet(0.6, './texture/neptune.jpg', 14, 0.002)
 ];
 
 // Orbites
@@ -160,7 +160,7 @@ function animate()
 }
 
 function createStar(x, y, z, scale = 1) {
-  const texture = new THREE.TextureLoader().load('/Etoile/1.png');
+  const texture = new THREE.TextureLoader().load('./Etoile/1.png');
 
   const material = new THREE.SpriteMaterial({
     map: texture,
@@ -183,29 +183,29 @@ for (let i = 0; i < 200; i++) {
 }
 
 
-//Nouveau décor (nouvelle scène)
+// //Nouveau décor (nouvelle scène)
 
-const scene2Group = new THREE.Group();
-scene2Group.position.y = -50; // Distance verticale entre scène 1 et 2
+// const scene2Group = new THREE.Group();
+// scene2Group.position.y = -50; // Distance verticale entre scène 1 et 2
 
-// Exemple simple de sol noir
-const blackFloorGeo = new THREE.PlaneGeometry(100, 100);
-const blackFloorMat = new THREE.MeshBasicMaterial({ color: 0x000000, side: THREE.DoubleSide });
-const blackFloor = new THREE.Mesh(blackFloorGeo, blackFloorMat);
-blackFloor.rotation.x = Math.PI / 2;
-scene2Group.add(blackFloor);
+// // Exemple simple de sol noir
+// const blackFloorGeo = new THREE.PlaneGeometry(100, 100);
+// const blackFloorMat = new THREE.MeshBasicMaterial({ color: 0x000000, side: THREE.DoubleSide });
+// const blackFloor = new THREE.Mesh(blackFloorGeo, blackFloorMat);
+// blackFloor.rotation.x = Math.PI / 2;
+// scene2Group.add(blackFloor);
 
-// Ajoute le groupe à ta scène principale
-scene.add(scene2Group);
+// // Ajoute le groupe à ta scène principale
+// scene.add(scene2Group);
 
-window.addEventListener("keydown", (e) => {
-  if (e.key.toLowerCase() === "v") {
-    gsap.to(camera.position, {
-      y: -50, // Même valeur que scene2Group.position.y
-      duration: 2,
-      ease: "power2.inOut"
-    });
-  }
-});
+// window.addEventListener("keydown", (e) => {
+//   if (e.key.toLowerCase() === "v") {
+//     gsap.to(camera.position, {
+//       y: -50, // Même valeur que scene2Group.position.y
+//       duration: 2,
+//       ease: "power2.inOut"
+//     });
+//   }
+// });
 
 animate();
