@@ -183,4 +183,29 @@ for (let i = 0; i < 200; i++) {
 }
 
 
+//Nouveau décor (nouvelle scène)
+
+const scene2Group = new THREE.Group();
+scene2Group.position.y = -50; // Distance verticale entre scène 1 et 2
+
+// Exemple simple de sol noir
+const blackFloorGeo = new THREE.PlaneGeometry(100, 100);
+const blackFloorMat = new THREE.MeshBasicMaterial({ color: 0x000000, side: THREE.DoubleSide });
+const blackFloor = new THREE.Mesh(blackFloorGeo, blackFloorMat);
+blackFloor.rotation.x = Math.PI / 2;
+scene2Group.add(blackFloor);
+
+// Ajoute le groupe à ta scène principale
+scene.add(scene2Group);
+
+window.addEventListener("keydown", (e) => {
+  if (e.key.toLowerCase() === "v") {
+    gsap.to(camera.position, {
+      y: -50, // Même valeur que scene2Group.position.y
+      duration: 2,
+      ease: "power2.inOut"
+    });
+  }
+});
+
 animate();
