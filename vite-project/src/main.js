@@ -50,7 +50,7 @@ document.addEventListener('mousemove', (event) => {
 
 
 const textureLoader = new THREE.TextureLoader();
-const sunTexture = textureLoader.load('texture/SunTexture.jpg');
+const sunTexture = textureLoader.load('./texture/SunTexture.jpg');
 
 const sunMaterial = new THREE.MeshBasicMaterial({
   map: sunTexture,
