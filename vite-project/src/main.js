@@ -24,6 +24,12 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 
 // Scene, camera, rendu
+
+let cameraTarget = new THREE.Vector3(0, 0, 0);
+let cameraTransitioning = false;
+let followMouse = true;
+
+
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
   70,
@@ -140,21 +146,28 @@ const orbitRadii = [2, 3.5, 5, 6.5, 8, 10, 12, 14];
 orbitRadii.forEach(r => createOrbit(r));
 
 //Animation
-function animate()
-{
+function animate() {
   requestAnimationFrame(animate);
 
-
-  planets.forEach(p =>
-  {
+  // Animation des planètes
+  planets.forEach(p => {
     p.userData.angle += p.userData.speed;
     p.position.x = Math.cos(p.userData.angle) * p.userData.orbitRadius;
     p.position.z = Math.sin(p.userData.angle) * p.userData.orbitRadius;
   });
 
-  camera.position.x += (mouseX * 10 - camera.position.x) * 0.05;
-  camera.position.y += (mouseY * 5 - camera.position.y) * 0.05;
-  camera.lookAt(0, 0, 0);
+  // Mouvement souris immersif (seulement avant descente)
+  if (followMouse) {
+    const targetX = mouseX * 10;
+    const targetY = mouseY * 5;
+
+    camera.position.x += (targetX - camera.position.x) * 0.05;
+    camera.position.y += (targetY - camera.position.y) * 0.05;
+    // Z reste fixe (on ne touche pas à la profondeur)
+  }
+
+  // Toujours regarder la cible (le soleil ou la scène 2)
+  camera.lookAt(cameraTarget);
 
   renderer.render(scene, camera);
 }
@@ -178,34 +191,50 @@ for (let i = 0; i < 200; i++) {
   const x = (Math.random() - 0.5) * 200;
   const y = (Math.random() - 0.5) * 200;
   const z = (Math.random() - 0.5) * 200;
-  const scale = Math.random() * 1.5 + 0.5; // taille entre 0.5 et 2
+  const scale = Math.random() * 1.5 + 0.5;
   createStar(x, y, z, scale);
 }
 
 
-// //Nouveau décor (nouvelle scène)
+//Deuxième scène ("section")
+const scene2Group = new THREE.Group();
+scene2Group.position.y = -50;
 
-// const scene2Group = new THREE.Group();
-// scene2Group.position.y = -50; // Distance verticale entre scène 1 et 2
+const blackFloorGeo = new THREE.PlaneGeometry(100, 100);
+const blackFloorMat = new THREE.MeshBasicMaterial({ color: 0x1C1C1C, side: THREE.DoubleSide });
+const blackFloor = new THREE.Mesh(blackFloorGeo, blackFloorMat);
+blackFloor.rotation.x = Math.PI / 2;
+scene2Group.add(blackFloor);
 
-// // Exemple simple de sol noir
-// const blackFloorGeo = new THREE.PlaneGeometry(100, 100);
-// const blackFloorMat = new THREE.MeshBasicMaterial({ color: 0x000000, side: THREE.DoubleSide });
-// const blackFloor = new THREE.Mesh(blackFloorGeo, blackFloorMat);
-// blackFloor.rotation.x = Math.PI / 2;
-// scene2Group.add(blackFloor);
+scene.add(scene2Group);
 
-// // Ajoute le groupe à ta scène principale
-// scene.add(scene2Group);
+document.getElementById("scroll").addEventListener("click", () =>
+{
+  document.getElementById("scroll-up").classList.remove("hidden");
+  followMouse = false;
+  gsap.to(camera.position, {
+    y: -50,
+    duration: 2,
+    ease: "power2.inOut"
+  });
 
-// window.addEventListener("keydown", (e) => {
-//   if (e.key.toLowerCase() === "v") {
-//     gsap.to(camera.position, {
-//       y: -50, // Même valeur que scene2Group.position.y
-//       duration: 2,
-//       ease: "power2.inOut"
-//     });
-//   }
-// });
+  gsap.to(cameraTarget, {
+    y: -50,
+    duration: 2,
+    ease: "power2.inOut"
+  });
+
+  gsap.to("#overlay", {
+    yPercent: -150,
+    opacity: 0,
+    duration: 2,
+    ease: "power2.inOut",
+    onComplete: () => {
+      document.getElementById("overlay").style.display = "none";
+    }
+  });
+});
+
+
 
 animate();
