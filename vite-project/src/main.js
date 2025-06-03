@@ -149,24 +149,23 @@ orbitRadii.forEach(r => createOrbit(r));
 function animate() {
   requestAnimationFrame(animate);
 
-  // Animation des planètes
+  // animation des planètes
   planets.forEach(p => {
     p.userData.angle += p.userData.speed;
     p.position.x = Math.cos(p.userData.angle) * p.userData.orbitRadius;
     p.position.z = Math.sin(p.userData.angle) * p.userData.orbitRadius;
   });
 
-  // Mouvement souris immersif (seulement avant descente)
+  // mouvement souris immersif 
   if (followMouse) {
     const targetX = mouseX * 10;
     const targetY = mouseY * 5;
 
     camera.position.x += (targetX - camera.position.x) * 0.05;
     camera.position.y += (targetY - camera.position.y) * 0.05;
-    // Z reste fixe (on ne touche pas à la profondeur)
   }
 
-  // Toujours regarder la cible (le soleil ou la scène 2)
+  // toujours regarder la cible (le soleil ou la scène 2)
   camera.lookAt(cameraTarget);
 
   renderer.render(scene, camera);
@@ -208,31 +207,73 @@ scene2Group.add(blackFloor);
 
 scene.add(scene2Group);
 
-document.getElementById("scroll").addEventListener("click", () =>
+
+// animation descendante 
+document.getElementById("scroll").addEventListener("click", ()=>
 {
-  document.getElementById("scroll-up").classList.remove("hidden");
+  document.getElementById("scroll-up").style.display = "block";
   followMouse = false;
-  gsap.to(camera.position, {
+  gsap.to(camera.position,{
     y: -50,
     duration: 2,
     ease: "power2.inOut"
   });
 
-  gsap.to(cameraTarget, {
+  gsap.to(cameraTarget,{
     y: -50,
     duration: 2,
     ease: "power2.inOut"
   });
 
-  gsap.to("#overlay", {
-    yPercent: -150,
+  gsap.to("#overlay",{
+    yPercent: -200,
     opacity: 0,
     duration: 2,
     ease: "power2.inOut",
-    onComplete: () => {
+    onComplete:()=>{
       document.getElementById("overlay").style.display = "none";
     }
   });
+});
+
+
+document.getElementById("scroll-up").addEventListener("click", () => {
+  followMouse = true;
+
+  gsap.to(camera.position,
+  {
+    y: 20,
+    duration: 2,
+    ease: "power2.inOut"
+  });
+
+  gsap.to(cameraTarget,
+  {
+    y: 0,
+    duration: 2,
+    ease: "power2.inOut"
+  });
+
+  const overlay = document.getElementById("overlay");
+
+  overlay.style.display = "flex";
+  overlay.style.opacity = "1";
+
+gsap.set(overlay, {
+  opacity: 0,
+  clipPath: "inset(100% 0% 0% 0%)"
+});
+
+gsap.to(overlay, {
+  opacity: 1,
+  clipPath: "inset(0% 0% 0% 0%)",
+  duration: 1.5,
+  ease: "power2.out"
+});
+
+
+
+  document.getElementById("scroll-up").style.display = "none";
 });
 
 

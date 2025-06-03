@@ -20,17 +20,21 @@ canvas {
 
 #overlay {
   position: absolute;
-  top: 10%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -190%);
   width: 100%;
   text-align: center;
-  z-index: 10;
+  z-index: 5;
   color: white;
-  font-family: 'Arial', sans-serif;
   font-size: 3vmax;
-  margin: ;
+  overflow: hidden;
 }
 
-h1{
+
+
+
+h1 {
   word-spacing: 8px;
   letter-spacing: 2px;
   font-size: 50px;
@@ -38,7 +42,6 @@ h1{
   font-family: Monoton;
   font-weight: 300;
   color: white;
-  position: 50%;
 }
 
 /* Loading Screen
@@ -138,6 +141,17 @@ h1{
   50% {
     transform: translateX(-50%) translateY(10px);
   }
+}
+
+#scroll-up {
+  position: absolute;
+  top: 50px; 
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  cursor: pointer;    
+  filter: invert(1);
+
 }
 
 .skills-section {
