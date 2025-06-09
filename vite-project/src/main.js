@@ -217,18 +217,22 @@ const sections = [
     show: () => {
       const overlay = document.getElementById("overlay");
       overlay.style.display = "flex";
-      overlay.style.transform = "translate(-50%, -70%)";
       overlay.style.opacity = 0;
+      overlay.style.transform = "translate(-50%, -70%)";
 
       gsap.to(overlay, {
-        yPercent: 0,
         opacity: 1,
+        y: 0,
         duration: 1.5,
-        ease: "power2.inOut"
+        ease: "power2.inOut",
+        onUpdate: () => {
+          overlay.style.transform = "translate(-50%, -50%)";
+        }
       });
 
-      document.getElementById("scroll-up").style.display = "none";
+    document.getElementById("scroll-up").style.display = "none";
     },
+
     hide: () => {
       const overlay = document.getElementById("overlay");
       gsap.to(overlay, {
@@ -267,6 +271,10 @@ function goToSection(index) {
 
   currentSection = index;
   const section = sections[index]; 
+
+  if (index !== 0) {
+    document.getElementById("scroll-up").style.display = "block";
+  }
 
   followMouse = (index === 0);
 
@@ -325,6 +333,22 @@ document.getElementById("scroll-up").addEventListener("click", () => {
 });
 
 
+let scrollDirection = "down"; // haut/bas selon la molette
+
+window.addEventListener("wheel", (event) => {
+  scrollDirection = event.deltaY > 0 ? "down" : "up";
+  if (scroll) return;
+  scroll = true;
+
+  goToSection(currentSection + (scrollDirection === "down" ? 1 : -1));
+
+  setTimeout(() => {
+    scroll = false;
+  }, 1600);
+});
+
+
+
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
@@ -350,16 +374,21 @@ const formationSection = document.getElementById("section-formation");
 // affichage presentation
 
 function showPresentation() {
-  presentation.style.transform = "translateY(0)";
-  presentation.style.opacity = "1";
-  presentation.style.pointerEvents = "auto";
+  presentation.classList.remove("exit-up", "exit-down");
+  presentation.classList.add("enter");
 }
 
 function hidePresentation() {
-  presentation.style.transform = "translateY(100vh)";
-  presentation.style.opacity = "0";
-  presentation.style.pointerEvents = "none";
+  presentation.classList.remove("enter", "exit-up", "exit-down");
+
+  if (scrollDirection === "down") {
+    presentation.classList.add("exit-up");
+  } else {
+    presentation.classList.add("exit-down");
+  }
 }
+
+
 
 // affichage formation 
 

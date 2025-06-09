@@ -237,7 +237,7 @@ Ici on s'occupera du css de la page présentation
   transform: translateX(-80%);
   opacity: 0;
   pointer-events: none;
-  transition: transform 2.2s ease, opacity 1.2s ease;
+  transition: transform 2.2s ease, opacity 1.5s ease;
   z-index: 10;
   justify-content: center;  
   align-items: center;     
@@ -275,10 +275,34 @@ Ici on s'occupera du css de la page présentation
   font-family: Lato;
 }
 
+#presentation-section {
+  transform: translateX(-80%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+#presentation-section.enter {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#presentation-section.exit-up {
+  transform: translateY(-100vh);
+  opacity: 0;
+  pointer-events: none;
+}
+
+#presentation-section.exit-down {
+  transform: translateY(100vh);
+  opacity: 0;
+  pointer-events: none;
+}
 
 /* 
 
-Ici on s'occupe de la partie presentation formation 
+Ici on s'occupe de la partie formation 
 
 */
 
@@ -318,7 +342,7 @@ Ici on s'occupe de la partie presentation formation
   pointer-events: none;
 }
 
-#section-formation.visible {
+#section-formation.always-visible {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
