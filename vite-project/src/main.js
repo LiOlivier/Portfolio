@@ -207,74 +207,171 @@ scene2Group.add(blackFloor);
 
 scene.add(scene2Group);
 
+// ========================= //
+//   Navigation par section  //
+// ========================= //
+const sections = [
+  {
+    id: "overlay",
+    y: 10,
+    show: () => {
+      const overlay = document.getElementById("overlay");
+      overlay.style.display = "flex";
+      overlay.style.transform = "translate(-50%, -70%)";
+      overlay.style.opacity = 0;
 
-// animation descendante 
-document.getElementById("scroll").addEventListener("click", ()=>
-{
-  document.getElementById("scroll-up").style.display = "block";
-  followMouse = false;
-  gsap.to(camera.position,{
-    y: -50,
-    duration: 2,
-    ease: "power2.inOut"
-  });
+      gsap.to(overlay, {
+        yPercent: 0,
+        opacity: 1,
+        duration: 1.5,
+        ease: "power2.inOut"
+      });
 
-  gsap.to(cameraTarget,{
-    y: -50,
-    duration: 2,
-    ease: "power2.inOut"
-  });
-
-  gsap.to("#overlay",{
-    yPercent: -200,
-    opacity: 0,
-    duration: 2,
-    ease: "power2.inOut",
-    onComplete:()=>{
-      document.getElementById("overlay").style.display = "none";
+      document.getElementById("scroll-up").style.display = "none";
+    },
+    hide: () => {
+      const overlay = document.getElementById("overlay");
+      gsap.to(overlay, {
+        yPercent: -200,
+        opacity: 0,
+        duration: 1.5,
+        ease: "power2.inOut",
+        onComplete: () => {
+          overlay.style.display = "none";
+          overlay.style.transform = "";
+        }
+      });
     }
+  }
+  ,
+  {
+    id: "presentation-section",
+    y: -50,
+    show: showPresentation,
+    hide: hidePresentation
+  },
+  {
+    id: "section-formation",
+    y: -100,
+    show: showFormation,
+    hide: hideFormation
+  }
+];
+
+
+let currentSection = 0;
+let scroll = false;
+
+function goToSection(index) {
+  if (index < 0 || index >= sections.length) return;
+
+  currentSection = index;
+  const section = sections[index]; 
+
+  followMouse = (index === 0);
+
+  if (index === 0) {
+    gsap.to(camera.position, {
+      x: 20,
+      y: 20,
+      z: 20,
+      duration: 1.5,
+      ease: "power2.inOut"
+    });
+
+    gsap.to(cameraTarget, {
+      x: 0,
+      y: 0,
+      z: 0,
+      duration: 1.5,
+      ease: "power2.inOut"
+    });
+  } else {
+    gsap.to(camera.position, {
+      y: section.y,
+      duration: 1.5,
+      ease: "power2.inOut"
+    });
+
+    gsap.to(cameraTarget, {
+      y: section.y,
+      duration: 1.5,
+      ease: "power2.inOut"
+    });
+  }
+
+  sections.forEach((s, i) => {
+    if (i !== index && s.hide) s.hide();
   });
+
+  if (section.show) section.show();
+}
+
+//scroll down animation descendante 
+document.getElementById("scroll").addEventListener("click", () => {
+  if (scroll) return;
+  scroll = true;
+  goToSection(currentSection + 1);
+  setTimeout(() => scroll = false, 1600);
 });
 
 
+// //scroll vers le haut animation montante
 document.getElementById("scroll-up").addEventListener("click", () => {
-  followMouse = true;
-
-  gsap.to(camera.position,
-  {
-    y: 20,
-    duration: 2,
-    ease: "power2.inOut"
-  });
-
-  gsap.to(cameraTarget,
-  {
-    y: 0,
-    duration: 2,
-    ease: "power2.inOut"
-  });
-
-  const overlay = document.getElementById("overlay");
-
-  overlay.style.display = "flex";
-  overlay.style.opacity = "1";
-
-gsap.set(overlay, {
-  opacity: 0,
-  clipPath: "inset(100% 0% 0% 0%)"
-});
-
-gsap.to(overlay, {
-  opacity: 1,
-  clipPath: "inset(0% 0% 0% 0%)",
-  duration: 1.5,
-  ease: "power2.out"
+  if (scroll) return;
+  scroll = true;
+  goToSection(currentSection - 1);
+  setTimeout(() => scroll = false, 1600);
 });
 
 
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+// scroll avec la molette 
 
-  document.getElementById("scroll-up").style.display = "none";
+window.addEventListener("wheel", (event) => {
+  if (scroll) return;
+  scroll = true;
+
+  const direction = event.deltaY > 0 ? 1 : -1;
+  goToSection(currentSection + direction);
+
+  setTimeout(() => {
+    scroll = false;
+  }, 1600);
 });
+
+const presentation = document.getElementById("presentation-section");
+const formationSection = document.getElementById("section-formation");
+
+// affichage presentation
+
+function showPresentation() {
+  presentation.style.transform = "translateY(0)";
+  presentation.style.opacity = "1";
+  presentation.style.pointerEvents = "auto";
+}
+
+function hidePresentation() {
+  presentation.style.transform = "translateY(100vh)";
+  presentation.style.opacity = "0";
+  presentation.style.pointerEvents = "none";
+}
+
+// affichage formation 
+
+function showFormation() {
+  formationSection.classList.remove("hidden");
+  formationSection.classList.add("visible");
+}
+
+function hideFormation() {
+  formationSection.classList.remove("visible");
+  formationSection.classList.add("hidden");
+}
 
 
 

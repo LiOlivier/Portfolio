@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Monoton&family=Playwrite+DK+Loopet:wght@100..400&family=Sacramento&display=swap');
-
-*{
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Indie+Flower&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Monoton&family=Playwrite+DK+Loopet:wght@100..400&family=Sacramento&display=swap');*{
   color: rgba(194, 191, 191, 0.87);
 
 }
@@ -12,27 +10,50 @@ html, body {
   overflow: hidden;
 }
 
+
 canvas {
-  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
+  z-index: -1; 
+  pointer-events: none;
+}
+
+#overlay h1 {
+  margin: 0;
 }
 
 #overlay {
   position: absolute;
-  top: 50%;
+  top: 20%;
   left: 50%;
-  transform: translate(-50%, -190%);
-  width: 100%;
-  text-align: center;
+  transform: translate(-50%, -50%) translateY(00px); 
+  opacity: 1;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   z-index: 5;
-  color: white;
+  text-align: center;
   font-size: 3vmax;
-  overflow: hidden;
+  pointer-events: none;
+}
+
+#overlay.hide {
+  transform: translate(-80%, -80%) translateY(-300px); 
+  opacity: 1;
+  pointer-events: none;
 }
 
 
-
+#overlay.show {
+  transform: translate(-50%, -50%) translateY(0); 
+  opacity: 1;
+  pointer-events: auto;
+}
 
 h1 {
   word-spacing: 8px;
@@ -102,19 +123,7 @@ h1 {
   100% { opacity: 0; }
 } */
 
-#scroll-up {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 15;
-  cursor: pointer;
-  animation: bounce 2s infinite;
-}
 
-.hidden {
-  display: none;
-}
 
 #scroll {
   color:white;
@@ -126,7 +135,8 @@ h1 {
   height: 40px;
   cursor: pointer;
   animation: bounce 2s infinite;
-  z-index: 10;
+  z-index: 200;
+  pointer-events: auto;
 }
 
 #scroll img{
@@ -143,6 +153,13 @@ h1 {
   }
 }
 
+.overlay-reset {
+  display: flex !important;
+  opacity: 1 !important;
+  transform: translate(0%, -10%) !important;
+}
+
+
 #scroll-up {
   position: absolute;
   top: 50px; 
@@ -151,6 +168,7 @@ h1 {
   z-index: 20;
   cursor: pointer;    
   filter: invert(1);
+  animation: bounce 2s infinite;
 
 }
 
@@ -205,9 +223,103 @@ h1 {
   display: none;
 }
 
-#section-main {
-  padding: 50px;
-  background: #969494;
-  color: white;
-  font-family: Arial, sans-serif;
+/*
+
+Ici on s'occupera du css de la page présentation
+
+*/
+
+#presentation-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  transform: translateX(-80%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 2.2s ease, opacity 1.2s ease;
+  z-index: 10;
+  justify-content: center;  
+  align-items: center;     
+}
+
+.presentation-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  max-width: 2000px;
+  flex-wrap: wrap;
+}
+
+.presentation-container img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #fff;
+}
+
+.presentation-texte h2 {
+  margin: 0 0 10px;
+  font-size: 2.2em;
+  color: #b99c4b;
+  font-family: Do Hyeon;
+}
+
+.presentation-texte p {
+  font-size: 1.2em;
+  line-height: 1.6em;
+  max-width: 500px;
+  color: #ddd;
+  font-family: Lato;
+}
+
+
+/* 
+
+Ici on s'occupe de la partie presentation formation 
+
+*/
+
+#section-formation {
+  padding: 60px 10vw;
+  background-color: #111;
+  color: #eee;
+  font-family: Lato, sans-serif;
+}
+
+#section-formation h2 {
+  font-size: 2em;
+  color: #b99c4b;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.formation {
+  margin-bottom: 40px;
+}
+
+.formation h3 {
+  font-size: 1.3em;
+  margin: 0 0 8px;
+}
+
+.formation-date {
+  display: block;
+  font-size: 0.9em;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+#section-formation.hidden {
+  opacity: 0;
+  transform: translateY(100vh);
+  pointer-events: none;
+}
+
+#section-formation.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
