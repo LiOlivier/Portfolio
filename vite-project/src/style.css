@@ -209,7 +209,13 @@ Ici on s'occupera du css de la page présentation
   font-family: Lato, sans-serif;
   padding: 50px 10vw;
   background-color: transparent;
-  transform: translateY(100vh);
+}
+
+.skills-section h2{
+  color: white;
+  font-size: 10vh;
+  font-family: Lato, sans-serif;
+  font-weight: 700;
 }
 
 .skills-header {
@@ -221,7 +227,8 @@ Ici on s'occupera du css de la page présentation
 }
 
 .filter-button {
-  padding: 10px 18px;
+  padding: 6px 14px;
+  font-size: 13px;
   background-color: transparent;
   color: #b99c4b;
   border: 1px solid #b99c4b;
@@ -245,14 +252,13 @@ Ici on s'occupera du css de la page présentation
 }
 
 .skill-card {
-  width: 140px;
+  width: 120px;
+  padding: 12px 10px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 15px;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
-  background-color: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.03);
+  transition: transform 0.2s ease;
 }
 
 .skill-card:hover {
@@ -261,15 +267,25 @@ Ici on s'occupera du css de la page présentation
 }
 
 .skill-card img {
-  width: 48px;
-  height: 48px;
-  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 6px;
 }
 
 .skill-card p {
-  font-size: 14px;
-  margin: 0;
-  color: #f0f0f0;
+  font-size: 13px;
+  margin: 4px 0;
+  color: #eee;
+}
+
+.skill-card .learn-more {
+  font-size: 12px;
+  margin-top: 4px;
+  color: #white;
+}
+
+.skill-card .learn-more:hover {
+  color: #fff;
 }
 
 .skills-section.enter {
