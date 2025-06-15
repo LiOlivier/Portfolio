@@ -1,23 +1,3 @@
-// const loadingManager = new THREE.LoadingManager();
-
-// loadingManager.onProgress = function (url, loaded, total) {
-//   const progress = (loaded / total) * 100;
-//   const fill = document.getElementById('progress-fill');
-//   if (fill) fill.style.width = `${progress}%`;
-// };
-
-// loadingManager.onLoad = function () {
-//   const loadingScreen = document.getElementById('loading-screen');
-//   if (loadingScreen) {
-//     loadingScreen.style.opacity = 0;
-//     setTimeout(() => (loadingScreen.style.display = 'none'), 500);
-//   }
-// };
-
-// const textureLoader = new THREE.TextureLoader(loadingManager); // ← important
-
-
-
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
@@ -186,7 +166,7 @@ function createStar(x, y, z, scale = 1) {
   scene.add(sprite);
 }
 
-for (let i = 0; i < 200; i++) {
+for (let i = 0; i < 500; i++) {
   const x = (Math.random() - 0.5) * 200;
   const y = (Math.random() - 0.5) * 200;
   const z = (Math.random() - 0.5) * 200;
@@ -261,23 +241,18 @@ const sections = [
     hide: hideFormation
   }
 ];
-
-
 let currentSection = 0;
 let scroll = false;
-
 function goToSection(index) {
   if (index < 0 || index >= sections.length) return;
-
   currentSection = index;
   const section = sections[index]; 
-
   if (index !== 0) {
     document.getElementById("scroll-up").style.display = "block";
   }
 
   followMouse = (index === 0);
-
+  
   if (index === 0) {
     gsap.to(camera.position, {
       x: 20,
@@ -347,15 +322,7 @@ window.addEventListener("wheel", (event) => {
   }, 1600);
 });
 
-
-
-/////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////
 // scroll avec la molette 
-
 window.addEventListener("wheel", (event) => {
   if (scroll) return;
   scroll = true;
@@ -372,7 +339,6 @@ const presentation = document.getElementById("presentation-section");
 const formationSection = document.getElementById("section-formation");
 
 // affichage presentation
-
 function showPresentation() {
   presentation.classList.remove("exit-up", "exit-down");
   presentation.classList.add("enter");
@@ -388,20 +354,21 @@ function hidePresentation() {
   }
 }
 
-
-
 // affichage formation 
-
 function showFormation() {
-  formationSection.classList.remove("hidden");
-  formationSection.classList.add("visible");
+  formationSection.classList.remove("exit-up", "exit-down");
+  formationSection.classList.add("enter");
 }
 
 function hideFormation() {
-  formationSection.classList.remove("visible");
-  formationSection.classList.add("hidden");
-}
+  formationSection.classList.remove("enter", "exit-up", "exit-down");
 
+  if (scrollDirection === "down") {
+    formationSection.classList.add("exit-up");
+  } else {
+    formationSection.classList.add("exit-down");
+  }
+}
 
 
 animate();
