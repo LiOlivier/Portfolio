@@ -233,13 +233,22 @@ const sections = [
     y: -50,
     show: showPresentation,
     hide: hidePresentation
-  },
+  }, 
+  
+  {
+    id: "skills-section",
+    y: -100, 
+    show: showSkills,
+    hide: hideSkills
+  }
+  ,
   {
     id: "section-formation",
-    y: -100,
+    y: -150,
     show: showFormation,
     hide: hideFormation
   }
+  
 ];
 let currentSection = 0;
 let scroll = false;
@@ -336,7 +345,9 @@ window.addEventListener("wheel", (event) => {
 });
 
 const presentation = document.getElementById("presentation-section");
+const skillsSection = document.querySelector(".skills-section");
 const formationSection = document.getElementById("section-formation");
+
 
 // affichage presentation
 function showPresentation() {
@@ -354,6 +365,23 @@ function hidePresentation() {
   }
 }
 
+// affichage compétences
+function showSkills() {
+  skillsSection.classList.remove("exit-up", "exit-down");
+  skillsSection.classList.add("enter");
+}
+
+function hideSkills() {
+  skillsSection.classList.remove("enter", "exit-up", "exit-down");
+
+  if (scrollDirection === "down") {
+    skillsSection.classList.add("exit-up");
+  } else {
+    skillsSection.classList.add("exit-down");
+  }
+}
+
+
 // affichage formation 
 function showFormation() {
   formationSection.classList.remove("exit-up", "exit-down");
@@ -362,7 +390,6 @@ function showFormation() {
 
 function hideFormation() {
   formationSection.classList.remove("enter", "exit-up", "exit-down");
-
   if (scrollDirection === "down") {
     formationSection.classList.add("exit-up");
   } else {
