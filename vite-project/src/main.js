@@ -189,6 +189,26 @@ scene.add(scene2Group);
 
 // Code skills
 
+const filterButtons = document.querySelectorAll(".filter-button");
+const skillCards = document.querySelectorAll(".skill-card");
+
+filterButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    filterButtons.forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
+
+    const filter = button.dataset.filter;
+
+    skillCards.forEach(card => {
+      if (filter === "all" || card.classList.contains(filter)) {
+        card.style.removeProperty("display");
+      } else {
+        card.style.display = "none";
+      }
+    });
+  });
+});
+
 
 
 // ========================= //

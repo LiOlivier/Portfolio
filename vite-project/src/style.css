@@ -209,6 +209,7 @@ Ici on s'occupera du css de la page présentation
   font-family: Lato, sans-serif;
   padding: 50px 10vw;
   background-color: transparent;
+  
 }
 
 .skills-section h2{
@@ -265,6 +266,7 @@ Ici on s'occupera du css de la page présentation
 .skill-card:hover {
   transform: scale(1.05);
   background-color: rgba(255, 255, 255, 0.1);
+  transition: 0.25s;
 }
 
 .skill-card img {
@@ -389,7 +391,7 @@ Ici on s'occupe de la partie formation
 
 #section-formation {
   position: absolute;
-  top: -2%;
+  top: 9%;
   left: -10%;
   width: 100vw;
   height: 100vh;
