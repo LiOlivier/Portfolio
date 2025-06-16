@@ -124,7 +124,7 @@ Ici on s'occupera du css de la page présentation
   width: 100vw;
   height: 100vh;
   display: flex;
-  transform: translateX(-80%);
+  transform: translateY(80%);
   opacity: 0;
   pointer-events: none;
   transition: transform 2.2s ease, opacity 1.5s ease;
@@ -165,12 +165,6 @@ Ici on s'occupera du css de la page présentation
   font-family: Lato;
 }
 
-#presentation-section {
-  transform: translateX(-80%);
-  opacity: 0;
-  pointer-events: none;
-  transition: transform 1s ease, opacity 1s ease;
-}
 
 #presentation-section.enter {
   transform: translateX(0);
@@ -194,8 +188,9 @@ Ici on s'occupera du css de la page présentation
 
 .skills-section {
   position: absolute;
-  top: -2%;
-  left: -10%;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 100vh); /* départ centré, en bas */
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -204,20 +199,38 @@ Ici on s'occupera du css de la page présentation
   align-items: center;
   opacity: 0;
   pointer-events: none;
-  transition: transform 1s ease, opacity 1s ease;
+  transition: transform 1.5s ease, opacity 1s ease;
   z-index: 10;
   font-family: Lato, sans-serif;
   padding: 50px 10vw;
   background-color: transparent;
-  
 }
+
+.skills-section.enter {
+  transform: translate(-50%, 0); /* monte verticalement */
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.skills-section.exit-up {
+  transform: translate(-50%, -100vh); /* sort vers le haut */
+  opacity: 0;
+  pointer-events: none;
+}
+
+.skills-section.exit-down {
+  transform: translate(-50%, 100vh); /* sort vers le bas */
+  opacity: 0;
+  pointer-events: none;
+}
+
 
 .skills-section h2{
   color: white;
-  font-size: 10vh;
   font-family: Lato, sans-serif;
   font-weight: 800;
   margin-bottom: 35px; 
+  font-size: clamp(2rem, 6vw, 30rem);
 }
 
 .skills-header {
@@ -290,24 +303,6 @@ Ici on s'occupera du css de la page présentation
 .skill-card .learn-more:hover {
   color: #fff;
   transition: 0.2s;
-}
-
-.skills-section.enter {
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.skills-section.exit-up {
-  transform: translateY(-100vh);
-  opacity: 0;
-  pointer-events: none;
-}
-
-.skills-section.exit-down {
-  transform: translateY(100vh);
-  opacity: 0;
-  pointer-events: none;
 }
 
 /* 

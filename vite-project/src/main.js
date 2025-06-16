@@ -320,7 +320,11 @@ function goToSection(index) {
     if (i !== index && s.hide) s.hide();
   });
 
-  if (section.show) section.show();
+  if (section.show) {
+    setTimeout(() => {
+      section.show();
+    }, 500);
+  }
 }
 
 //scroll down animation descendante 
@@ -394,16 +398,11 @@ function showSkills() {
   skillsSection.classList.remove("exit-up", "exit-down");
   skillsSection.classList.add("enter");
 }
-
 function hideSkills() {
   skillsSection.classList.remove("enter", "exit-up", "exit-down");
-
-  if (scrollDirection === "down") {
-    skillsSection.classList.add("exit-up");
-  } else {
-    skillsSection.classList.add("exit-down");
-  }
+  skillsSection.classList.add(scrollDirection === "down" ? "exit-up" : "exit-down");
 }
+
 
 // affichage formation 
 function showFormation() {
