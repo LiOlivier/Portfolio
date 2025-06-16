@@ -187,6 +187,10 @@ scene2Group.add(blackFloor);
 
 scene.add(scene2Group);
 
+// Code skills
+
+
+
 // ========================= //
 //   Navigation par section  //
 // ========================= //
@@ -381,7 +385,6 @@ function hideSkills() {
   }
 }
 
-
 // affichage formation 
 function showFormation() {
   formationSection.classList.remove("exit-up", "exit-down");
@@ -396,6 +399,8 @@ function hideFormation() {
     formationSection.classList.add("exit-down");
   }
 }
+
+
 
 
 animate();

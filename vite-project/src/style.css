@@ -215,7 +215,8 @@ Ici on s'occupera du css de la page présentation
   color: white;
   font-size: 10vh;
   font-family: Lato, sans-serif;
-  font-weight: 700;
+  font-weight: 800;
+  margin-bottom: 35px; 
 }
 
 .skills-header {
@@ -281,11 +282,12 @@ Ici on s'occupera du css de la page présentation
 .skill-card .learn-more {
   font-size: 12px;
   margin-top: 4px;
-  color: #white;
+  color: gray;
 }
 
 .skill-card .learn-more:hover {
   color: #fff;
+  transition: 0.2s;
 }
 
 .skills-section.enter {
