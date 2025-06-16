@@ -267,8 +267,15 @@ const sections = [
   }
   ,
   {
+    id: "projects-section",
+    y: -150, 
+    show: showProjects,
+    hide: hideProjects
+  }
+  ,
+  {
     id: "section-formation",
-    y: -150,
+    y: -200,
     show: showFormation,
     hide: hideFormation
   }
@@ -402,6 +409,19 @@ function hideSkills() {
   skillsSection.classList.remove("enter", "exit-up", "exit-down");
   skillsSection.classList.add(scrollDirection === "down" ? "exit-up" : "exit-down");
 }
+
+// affichage projets
+const projectsSection = document.getElementById("projects-section");
+
+function showProjects() {
+  projectsSection.classList.remove("exit-up", "exit-down");
+  projectsSection.classList.add("enter");
+}
+function hideProjects() {
+  projectsSection.classList.remove("enter", "exit-up", "exit-down");
+  projectsSection.classList.add(scrollDirection === "down" ? "exit-up" : "exit-down");
+}
+
 
 
 // affichage formation 
