@@ -207,19 +207,19 @@ Ici on s'occupera du css de la page présentation
 }
 
 .skills-section.enter {
-  transform: translate(-50%, 0); /* monte verticalement */
+  transform: translate(-50%, 0); 
   opacity: 1;
   pointer-events: auto;
 }
 
 .skills-section.exit-up {
-  transform: translate(-50%, -100vh); /* sort vers le haut */
+  transform: translate(-50%, -100vh);
   opacity: 0;
   pointer-events: none;
 }
 
 .skills-section.exit-down {
-  transform: translate(-50%, 100vh); /* sort vers le bas */
+  transform: translate(-50%, 100vh); 
   opacity: 0;
   pointer-events: none;
 }
@@ -312,25 +312,32 @@ Ici on s'occupe de la partie formation
 */
 
 .formation {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr auto;  
-  align-items: start;
-  max-width: 900px;
-  width: 100%;
-  margin: 20px;
-  padding: 20px 30px 25px;
+  margin-top: 20px;
+  display: flex;
+  gap: clamp(15px, 3vw, 30px);
+  align-items: center; 
+  padding: clamp(15px, 3vw, 25px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   background-color: rgba(255, 255, 255, 0.02);
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.03);
   transition: background-color 0.3s ease, border-color 0.3s ease;
   color: rgba(230, 230, 230, 0.9);
-  max-height: 25vh;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  max-width: 900px;
+  width: 100%;
 }
 
+.formation.reverse {
+  flex-direction: row-reverse;
+}
+
+.formation-logo img {
+  width: clamp(60px, 12vw, 100px);
+  height: clamp(60px, 10vw, 100px);
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
 
 .formation:hover {
   background-color: rgba(255, 255, 255, 0.05);
@@ -338,18 +345,19 @@ Ici on s'occupe de la partie formation
 }
 
 .formation-content {
-  padding-right: 20px;
-  width: 100%;
-  max-width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .formation-container h2 {
-  width: 100%;
-  text-align: left;
-  font-size: 2em;
-  margin-bottom: 20px;
   color: white;
   font-family: Lato, sans-serif;
+  font-weight: 800;
+  margin-top: -30px;
+  margin-bottom: 6px; 
+  font-size: clamp(2rem, 5vw, 30rem);
 }
 
 .formation h3 {
