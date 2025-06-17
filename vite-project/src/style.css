@@ -1251,7 +1251,7 @@ Ici on s'occupe de Contact
   font-weight: 800;
   font-size: clamp(2rem, 6vw, 30rem);
   color: white;
-  margin-top: -250px;
+  margin-top: -150px;
   margin-bottom: 15px;
 }
 
