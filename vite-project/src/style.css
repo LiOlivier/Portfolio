@@ -900,8 +900,8 @@ Ici on s'occupe de Contact
 
 @media (max-width: 768px) {
   .side-nav {
-    top: 10px;
-    right: 10px;
+    top: 20px;
+    right: 30px;
     flex-direction: row;
     gap: 10px;
   }
@@ -927,6 +927,24 @@ Ici on s'occupe de Contact
     line-height: 1.2;
   }
 }
+
+  .side-nav {
+  left: 43%;
+  max-width: 90%;
+  margin: 0 auto;    
+  gap: 8px;    
+  }
+
+  .side-nav button {
+    padding: 8px; /* plus petit padding */
+    width: 36px;
+    height: 36px;
+  }
+
+  .side-nav button img {
+    width: 18px;
+    height: 18px;
+  }
 
 /* PARTIE RESPONSIVE FORMATION */
 
@@ -957,7 +975,6 @@ Ici on s'occupe de Contact
   .formation-logo img {
     display: none;
   }
-
 
 }
 
@@ -1034,86 +1051,113 @@ Ici on s'occupe de Contact
 
 /* Skills */
 @media (max-width: 600px) {
-  .side-nav {
-  left: 43%;
-  max-width: 90%;
-  margin: 0 auto;    
-  gap: 8px;    
+  .skills-grid {
+    gap: 6px;
   }
 
-  .side-nav button {
-    padding: 8px; /* plus petit padding */
-    width: 36px;
-    height: 36px;
+  .skill-card {
+    width: 60px;
+    padding: 4px 2px;
+    border-radius: 6px;
   }
 
-  .side-nav button img {
-    width: 18px;
-    height: 18px;
+  .skill-card img {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 4px;
+  }
+
+  .skill-card p {
+    font-size: 0.55rem;
+    margin: 0;
+  }
+
+  .skill-card .learn-more {
+    font-size: 0.5rem;
+    display: none; /* tu peux aussi cacher ce lien si trop petit */
   }
 }
+
+
+
 
 
 
 
 /* responsive projets */
-@media (max-width: 600px) {
-  .project-card {
-    min-width: 260px;
+@media (max-width: 500px) {
+  #presentation-section {
+    padding-top: 30px;
+    height: auto;
+    min-height: 100vh;
+    position: relative;
+    transform: none !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -7%;
   }
 
-  .project-body h3 {
-    font-size: 1rem;
+  .presentation-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
   }
 
-  .project-body p {
-    font-size: 0.85rem;
+  .presentation-container img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+
+  .presentation-texte {
+    width: 90%;
+    font-size: 1em;
+    text-align: justify;
+    line-height: 1.6em;
+  }
+
+  .presentation-texte h2 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .presentation-texte p {
+    font-size: 1em;
+    line-height: 1.6em;
   }
 }
 
 
 /* Responsive contact*/
-@media (max-width: 768px) {
-  #section-contact {
-    padding: 30px 15px;
-  }
-
+@media (max-width: 600px) {
   .contact-wrapper {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 480px;
-    margin: 0 auto;
-    gap: 30px;
+    flex-direction: row;
+    padding: 10px;
+    gap: 10px;
+    top: -15%;
+    position: relative;
   }
 
   .contact-info,
   .contact-form {
     width: 100%;
-    padding: 15px;
-    box-sizing: border-box;
+    padding: 0;
   }
 
-  .contact-form form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .contact-form input,
-  .contact-form textarea {
-    font-size: 13px;
-    padding: 10px;
-  }
-
-  .contact-form button {
-    padding: 10px;
-    font-size: 14px;
+  .contact-info h3,
+  .contact-form h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    text-align: center;
   }
 
   .contact-info ul li {
-    font-size: 13px;
-    padding: 10px;
+    font-size: 0.8rem;
+    padding: 6px;
+    gap: 6px;
   }
 
   .contact-info ul li img {
@@ -1122,13 +1166,25 @@ Ici on s'occupe de Contact
   }
 
   .contact-socials {
-    justify-content: center;
-    margin-top: 15px;
+    margin: 10px auto;
+    gap: 8px;
   }
 
-  .contact-socials img {
-    width: 20px;
-    height: 20px;
+  .contact-socials a img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.75rem;
+    padding: 6px 8px;
+    margin-bottom: 8px;
+  }
+
+  .contact-form button {
+    padding: 8px;
+    font-size: 0.8rem;
   }
 }
 
