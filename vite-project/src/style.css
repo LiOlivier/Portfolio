@@ -71,8 +71,6 @@ canvas {
 
 .cv-floating-button {
   position: fixed;
-  font-size: 14px;
-  padding: 8px 12px;
   top: 20px;
   right: 20px;
   z-index: 9999;
@@ -81,6 +79,7 @@ canvas {
   align-items: center;
   gap: 8px;
 
+  font-size: 14px;
   padding: 10px 18px;
   background-color: #b99c4b;
   color: #1e1e1e;
@@ -102,6 +101,13 @@ canvas {
   height: 18px;
   filter: invert(1); 
 }
+
+.cv-floating-button span {
+  display: inline;
+  color:white;
+  font-family: Lato, sans-serif;
+}
+
 
 /* nav */
 
@@ -1205,15 +1211,19 @@ Ici on s'occupe de Contact
 
 @media (max-width: 768px) {
   .cv-floating-button {
-    position: fixed;
-    bottom: 230px;
-    right: 10px;
-    top: auto;
-    font-size: 12px;
-    padding: 8px 12px;
-    z-index: 9999;
+    width: 24px;
+    height: 24px;
+    padding: 6px;
+    font-size: 0;
+    border-radius: 50%;
+    background-color: #b99c4b;
     display: flex !important;
-    gap: 6px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    z-index: 9999;
+    position: absolute;
+    right: 17px;
   }
 
   .cv-floating-button span {
@@ -1221,11 +1231,12 @@ Ici on s'occupe de Contact
   }
 
   .cv-floating-button img {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     filter: invert(1);
   }
 }
+
 
 
 @media (max-width: 600px) {
