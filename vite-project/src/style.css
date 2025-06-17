@@ -103,66 +103,38 @@ h1 {
 
 .side-nav {
   position: fixed;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
+  top: 20px; /* distance du haut */
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* les boutons en ligne */
   gap: 20px;
   z-index: 9999;
+  margin-top: 10px;
 }
 
-.side-nav a {
+.side-nav button {
   background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   padding: 10px;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s ease;
 }
 
-.side-nav a:hover {
+.side-nav button:hover {
   background-color: #b99c4b;
 }
 
-.side-nav img {
+.side-nav button img {
   width: 20px;
   height: 20px;
-  filter: invert(1); 
-}
-
-
-
-/* bouton scroll up down*/
-#scroll {
-  color:white;
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  animation: bounce 2s infinite;
-  z-index: 200;
-  pointer-events: auto;
-}
-
-#scroll img{
-  width: 100%;
-  height: auto;
   filter: invert(1);
 }
-@keyframes bounce {
-  0%, 100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  50% {
-    transform: translateX(-50%) translateY(10px);
-  }
-}
+
 
 .overlay-reset {
   display: flex !important;
@@ -171,17 +143,7 @@ h1 {
 }
 
 
-#scroll-up {
-  position: absolute;
-  top: 50px; 
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 20;
-  cursor: pointer;    
-  filter: invert(1);
-  animation: bounce 2s infinite;
 
-}
 
 
 /*
@@ -706,6 +668,65 @@ Ici on s'occupe de la partie formation
   opacity: 0;
   pointer-events: none;
 }
+
+/* 
+
+Ici on s'occupe de Contact
+
+*/
+
+
+#section-contact {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 100vh); /* ou plus bas */
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 1s ease, opacity 1s ease;
+  z-index: 10;
+  padding: 60px 5vw;
+}
+
+#section-contact.enter {
+  transform: translate(-50%, 0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#section-contact.exit-up {
+  transform: translate(-50%, -100vh);
+  opacity: 0;
+}
+
+#section-contact.exit-down {
+  transform: translate(-50%, 100vh);
+  opacity: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

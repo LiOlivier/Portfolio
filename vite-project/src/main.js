@@ -33,8 +33,6 @@ document.addEventListener('mousemove', (event) => {
 });
 
 // Soleil shader
-
-
 const textureLoader = new THREE.TextureLoader();
 const sunTexture = textureLoader.load('./texture/SunTexture.jpg');
 
@@ -234,7 +232,6 @@ const sections = [
         }
       });
 
-    document.getElementById("scroll-up").style.display = "none";
     },
 
     hide: () => {
@@ -279,48 +276,61 @@ const sections = [
     show: showFormation,
     hide: hideFormation
   }
+  ,
+  {
+  id: "section-contact",
+  y: -250,
+  show: showContact,
+  hide: hideContact
+  }
+
   
 ];
 let currentSection = 0;
 let scroll = false;
-function goToSection(index) {
+function goToSection(index, instant = false) {
   if (index < 0 || index >= sections.length) return;
   currentSection = index;
-  const section = sections[index]; 
-  if (index !== 0) {
-    document.getElementById("scroll-up").style.display = "block";
-  }
+  const section = sections[index];
 
   followMouse = (index === 0);
-  
+
   if (index === 0) {
-    gsap.to(camera.position, {
-      x: 20,
-      y: 20,
-      z: 20,
-      duration: 1.5,
-      ease: "power2.inOut"
-    });
-
-    gsap.to(cameraTarget, {
-      x: 0,
-      y: 0,
-      z: 0,
-      duration: 1.5,
-      ease: "power2.inOut"
-    });
+    if (instant) {
+      camera.position.set(20, 20, 20);
+      cameraTarget.set(0, 0, 0);
+    } else {
+      gsap.to(camera.position, {
+        x: 20,
+        y: 20,
+        z: 20,
+        duration: 1.5,
+        ease: "power2.inOut"
+      });
+      gsap.to(cameraTarget, {
+        x: 0,
+        y: 0,
+        z: 0,
+        duration: 1.5,
+        ease: "power2.inOut"
+      });
+    }
   } else {
-    gsap.to(camera.position, {
-      y: section.y,
-      duration: 1.5,
-      ease: "power2.inOut"
-    });
-
-    gsap.to(cameraTarget, {
-      y: section.y,
-      duration: 1.5,
-      ease: "power2.inOut"
-    });
+    if (instant) {
+      camera.position.y = section.y;
+      cameraTarget.y = section.y;
+    } else {
+      gsap.to(camera.position, {
+        y: section.y,
+        duration: 1.5,
+        ease: "power2.inOut"
+      });
+      gsap.to(cameraTarget, {
+        y: section.y,
+        duration: 1.5,
+        ease: "power2.inOut"
+      });
+    }
   }
 
   sections.forEach((s, i) => {
@@ -328,28 +338,15 @@ function goToSection(index) {
   });
 
   if (section.show) {
-    setTimeout(() => {
+    if (instant) {
       section.show();
-    }, 500);
+    } else {
+      setTimeout(() => section.show(), 500);
+    }
   }
+
 }
 
-//scroll down animation descendante 
-document.getElementById("scroll").addEventListener("click", () => {
-  if (scroll) return;
-  scroll = true;
-  goToSection(currentSection + 1);
-  setTimeout(() => scroll = false, 1600);
-});
-
-
-// //scroll vers le haut animation montante
-document.getElementById("scroll-up").addEventListener("click", () => {
-  if (scroll) return;
-  scroll = true;
-  goToSection(currentSection - 1);
-  setTimeout(() => scroll = false, 1600);
-});
 
 
 let scrollDirection = "down"; // haut/bas selon la molette
@@ -378,6 +375,9 @@ window.addEventListener("wheel", (event) => {
     scroll = false;
   }, 1600);
 });
+
+
+
 
 const presentation = document.getElementById("presentation-section");
 const skillsSection = document.querySelector(".skills-section");
@@ -439,7 +439,21 @@ function hideFormation() {
   }
 }
 
+//affichage contact
+const contactSection = document.getElementById("section-contact");
 
+function showContact() {
+  contactSection.classList.remove("exit-up", "exit-down");
+  contactSection.classList.add("enter");
+}
+
+function hideContact() {
+  contactSection.classList.remove("enter", "exit-up", "exit-down");
+  contactSection.classList.add(scrollDirection === "down" ? "exit-up" : "exit-down");
+}
+
+
+window.goToSection = goToSection;
 
 
 animate();
