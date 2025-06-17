@@ -22,12 +22,20 @@ canvas {
 }
 
 #overlay h1 {
-  margin: 0;
+  word-spacing: 8px;
+  letter-spacing: 2px;
+  font-size: 50px;
+  padding: 5px 0;
+  font-family: Monoton;
+  font-weight: 300;
+  color: white;
+  position: relative;
+
 }
 
 #overlay {
   position: absolute;
-  top: 20%;
+  top: 27%;
   left: 50%;
   transform: translate(-50%, -50%) translateY(00px); 
   opacity: 1;
@@ -55,20 +63,13 @@ canvas {
   pointer-events: auto;
 }
 
-h1 {
-  word-spacing: 8px;
-  letter-spacing: 2px;
-  font-size: 50px;
-  padding: 5px 0;
-  font-family: Monoton;
-  font-weight: 300;
-  color: white;
-}
 
 /* CV */
 
 .cv-floating-button {
   position: fixed;
+  font-size: 14px;
+  padding: 8px 12px;
   top: 20px;
   right: 20px;
   z-index: 9999;
@@ -888,10 +889,39 @@ Ici on s'occupe de Contact
 
 
 
+/* Responsive NAV*/
 
+@media (max-width: 768px) {
+  .side-nav {
+    top: 10px;
+    right: 10px;
+    flex-direction: row;
+    gap: 10px;
+  }
 
-/* PARTIE RESPONSIVE */
+  .side-nav button {
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+  }
 
+  .side-nav button img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .cv-floating-button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  h1 {
+    font-size: 7vw;
+    line-height: 1.2;
+  }
+}
+
+/* PARTIE RESPONSIVE FORMATION */
 @media (max-width: 500px) {
   body, html {
     overflow-x: hidden;
@@ -972,6 +1002,13 @@ Ici on s'occupe de Contact
   }
 }
 
+@media (max-width: 600px) {
+  #overlay {
+    top: 20%;
+
+  }
+}
+
 /* Skills */
 @media (max-width: 600px) {
   .skill-card {
@@ -1007,18 +1044,33 @@ Ici on s'occupe de Contact
 }
 /* responsive projets */
 @media (max-width: 600px) {
-  .project-card {
-    min-width: 260px;
+  .skills-grid {
+    gap: 6px;
   }
 
-  .project-body h3 {
-    font-size: 1rem;
+  .skill-card {
+    width: 60px;
+    padding: 4px 2px;
+    border-radius: 6px;
   }
 
-  .project-body p {
-    font-size: 0.85rem;
+  .skill-card img {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 4px;
+  }
+
+  .skill-card p {
+    font-size: 0.55rem;
+    margin: 0;
+  }
+
+  .skill-card .learn-more {
+    font-size: 0.5rem;
+    display: none; /* tu peux aussi cacher ce lien si trop petit */
   }
 }
+
 
 
 /* Responsive contact*/
@@ -1028,3 +1080,38 @@ Ici on s'occupe de Contact
   }
 }
 
+@media (max-width: 600px) {
+  .cv-floating-button {
+    font-size: 12px;
+    padding: 6px 10px;
+    top: 15px;
+    right: 15px;
+    z-index: 9999;
+  }
+
+  .cv-floating-button span {
+    display: none; 
+  }
+}
+@media (max-width: 768px) {
+  .cv-floating-button {
+    display: none;
+  }
+
+  .cv-floating-button img {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cv-floating-button {
+    padding: 3px 8px;
+    font-size: 11px;
+  }
+
+  .cv-floating-button img {
+    width: 12px;
+    height: 12px;
+  }
+}
