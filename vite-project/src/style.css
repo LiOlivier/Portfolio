@@ -927,47 +927,36 @@ Ici on s'occupe de Contact
 
 /* PARTIE RESPONSIVE FORMATION */
 
-@media (max-width: 450px) {
+/* Formation */
+@media (max-width: 500px) {
   .formation {
-    flex-direction: column;
-    gap: 8px;
-    padding: 8px 10px;
-    border-radius: 6px;
-  }
-
-  .formation-logo img {
-    width: 35px;
-    height: 35px;
+    transform: scale(0.7);        
+    transform-origin: top left;  
+    margin-bottom: -60px;
+    position: relative;
+    left: 17%;
   }
 
   .formation h3 {
-    font-size: 0.85rem;
-    margin-bottom: 2px;
+    font-size: 14px;
   }
 
   .formation-date {
-    font-size: 0.75rem;
-    margin-bottom: 2px;
+    font-size: 12px;
   }
 
   .formation p {
-    font-size: 0.75rem;
-    line-height: 1.3;
+    font-size: 12.5px;
+    line-height: 1.4;
     text-align: justify;
   }
-
-  .formation-container h2 {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
+  
+  .formation-logo img {
+    display: none;
   }
 
-  #section-formation {
-    height: auto;
-    min-height: 100vh;
-    padding: 20px 5vw;
-  }
+
 }
-
 
 
   .presentation-section {
@@ -1042,37 +1031,28 @@ Ici on s'occupe de Contact
 
 /* Skills */
 @media (max-width: 600px) {
-  .skill-card {
-    width: 100px;
-    padding: 12px;
+  .side-nav {
+  left: 43%;
+  max-width: 90%;
+  margin: 0 auto;    
+  gap: 8px;    
   }
 
-  .filter-button {
-    font-size: 14px;
-    padding: 8px 12px;
+  .side-nav button {
+    padding: 8px; /* plus petit padding */
+    width: 36px;
+    height: 36px;
+  }
+
+  .side-nav button img {
+    width: 18px;
+    height: 18px;
   }
 }
 
-/* Formation */
-@media (max-width: 500px) {
-  .formation {
-    padding: 15px 15px;
-  }
 
-  .formation h3 {
-    font-size: 1em;
-  }
 
-  .formation-date {
-    font-size: 0.85em;
-  }
 
-  .formation p {
-    font-size: 0.9em;
-    text-align: justify;
-    text-justify: inter-word;
-  }
-}
 /* responsive projets */
 @media (max-width: 600px) {
   .project-card {
@@ -1091,10 +1071,72 @@ Ici on s'occupe de Contact
 
 /* Responsive contact*/
 @media (max-width: 768px) {
+  #section-contact {
+    padding: 30px 15px;
+  }
+
   .contact-wrapper {
     flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    gap: 30px;
+  }
+
+  .contact-info,
+  .contact-form {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+
+  .contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .contact-form button {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .contact-info ul li {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .contact-info ul li img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .contact-socials {
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  .contact-socials img {
+    width: 20px;
+    height: 20px;
   }
 }
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 600px) {
   .cv-floating-button {
