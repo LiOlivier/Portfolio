@@ -100,18 +100,18 @@ canvas {
 .cv-floating-button img {
   width: 18px;
   height: 18px;
-  filter: invert(1); /* Rend l'icône blanche si elle est noire */
+  filter: invert(1); 
 }
 
 /* nav */
 
 .side-nav {
   position: fixed;
-  top: 20px; /* distance du haut */
+  top: 20px; 
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  flex-direction: row; /* les boutons en ligne */
+  flex-direction: row; 
   gap: 20px;
   z-index: 9999;
   margin-top: 10px;
@@ -227,7 +227,7 @@ Ici on s'occupera du css de la page présentation
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translate(-50%, 100vh); /* départ centré, en bas */
+  transform: translate(-50%, 100vh); 
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -425,11 +425,11 @@ Ici on s'occupe de la partie projets
 
 .project-card img {
   width: 100%;
-  height: 180px; 
+  height: 140px; 
+  max-height: 140px;
   object-fit: cover;
   object-position: center; 
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  max-height: 180px;
 
 }
 
@@ -542,8 +542,14 @@ Ici on s'occupe de la partie projets
   font-weight: 800;
   font-size: clamp(2rem, 6vw, 30rem);
   color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
+.auto-scroll {
+  max-height: 400px;
+  overflow-y: hidden;
+}
 
 
 
@@ -936,7 +942,7 @@ Ici on s'occupe de Contact
   }
 
   .side-nav button {
-    padding: 8px; /* plus petit padding */
+    padding: 8px; 
     width: 36px;
     height: 36px;
   }
@@ -1197,38 +1203,46 @@ Ici on s'occupe de Contact
 
 
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .cv-floating-button {
+    position: fixed;
+    bottom: 230px;
+    right: 10px;
+    top: auto;
     font-size: 12px;
-    padding: 6px 10px;
-    top: 15px;
-    right: 15px;
+    padding: 8px 12px;
     z-index: 9999;
+    display: flex !important;
+    gap: 6px;
   }
 
   .cv-floating-button span {
-    display: none; 
-  }
-}
-@media (max-width: 768px) {
-  .cv-floating-button {
     display: none;
   }
 
   .cv-floating-button img {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
+    filter: invert(1);
   }
 }
 
-@media (max-width: 480px) {
-  .cv-floating-button {
-    padding: 3px 8px;
-    font-size: 11px;
+
+@media (max-width: 600px) {
+  .auto-scroll {
+    max-height: 450px;
+    gap: 12px;
   }
 
-  .cv-floating-button img {
-    width: 12px;
-    height: 12px;
-  }
+  #projects-section h2 {
+  text-align: center;
+  font-family: Lato, sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 6vw, 30rem);
+  color: white;
+  margin-top: -250px;
+  margin-bottom: 15px;
+}
+
+
 }
