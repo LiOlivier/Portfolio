@@ -827,6 +827,15 @@ Ici on s'occupe de Contact
   font-family: Lato, sans-serif;
   font-size: 0.95rem;
   resize: none;
+  transition: 
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    background-color 0.3s ease;
+  }
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: rgba(255, 255, 255, 0.8);
 }
 
 .contact-form input::placeholder,
