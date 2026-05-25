@@ -1,12 +1,10 @@
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 
 
 // Scene, camera, rendu
 
 let cameraTarget = new THREE.Vector3(0, 0, 0);
-let cameraTransitioning = false;
 let followMouse = true;
 
 
@@ -20,9 +18,17 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.set(20, 20, 20)
 scene.background = new THREE.Color(0x1C1C1C);
 const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.style.margin = 0;
 document.body.appendChild(renderer.domElement);
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
 
 // Mouse tracking
 let mouseX = 0;

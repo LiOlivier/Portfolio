@@ -1000,7 +1000,7 @@ Ici on s'occupe de Contact
 }
 
 
-  .presentation-section {
+  #presentation-section {
     transform: translate(0%, 10%);
     top: 0;
     left: -50%;
@@ -1012,7 +1012,7 @@ Ici on s'occupe de Contact
   }
 
   .presentation-container {
-    display: relative;
+    position: relative;
     flex-direction: column;
     align-items: center;
     padding: 0 20px;
