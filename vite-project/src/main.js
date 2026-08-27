@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { gsap } from 'gsap';
 
 
 
@@ -213,6 +214,67 @@ filterButtons.forEach(button => {
   });
 });
 
+// Empêche le zoom involontaire du navigateur avec Ctrl + molette.
+document.addEventListener("wheel", (event) => {
+  if (event.ctrlKey) event.preventDefault();
+}, { passive: false });
+
+// Les cartes dupliquées servaient uniquement au défilement automatique.
+// La section projets conserve les neuf projets originaux.
+const projectTrack = document.querySelector(".auto-scroll");
+if (projectTrack) {
+  const projectCards = [...projectTrack.querySelectorAll(".project-card")];
+  projectCards.slice(9).forEach(card => card.remove());
+
+  const visibleProjectCards = [...projectTrack.querySelectorAll(".project-card")];
+  const carouselViewport = projectTrack.parentElement;
+  const updateCarouselPadding = () => {
+    const cardWidth = visibleProjectCards[0]?.offsetWidth ?? 0;
+    const sidePadding = Math.max(0, (carouselViewport.clientWidth - cardWidth) / 2);
+    projectTrack.style.paddingInline = `${sidePadding}px`;
+  };
+  const selectProject = (card, shouldCenter = true) => {
+    visibleProjectCards.forEach(item => item.classList.toggle("is-selected", item === card));
+    if (shouldCenter) {
+      carouselViewport.scrollTo({
+        left: card.offsetLeft - (carouselViewport.clientWidth - card.offsetWidth) / 2,
+        behavior: "smooth"
+      });
+    }
+  };
+
+  updateCarouselPadding();
+  window.addEventListener("resize", updateCarouselPadding);
+
+  visibleProjectCards.forEach((card, index) => {
+    card.tabIndex = 0;
+    card.addEventListener("click", (event) => {
+      if (!event.target.closest("a")) {
+        selectProject(card);
+      }
+    });
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        selectProject(card);
+      }
+    });
+    if (index === 0) selectProject(card, false);
+  });
+
+  let activeProjectIndex = 0;
+  const moveProjects = (direction) => {
+    const selectedIndex = visibleProjectCards.findIndex(card => card.classList.contains("is-selected"));
+    if (selectedIndex >= 0) activeProjectIndex = selectedIndex;
+    activeProjectIndex = (activeProjectIndex + direction + visibleProjectCards.length) % visibleProjectCards.length;
+    const activeCard = visibleProjectCards[activeProjectIndex];
+    selectProject(activeCard);
+  };
+
+  document.getElementById("project-previous")?.addEventListener("click", () => moveProjects(-1));
+  document.getElementById("project-next")?.addEventListener("click", () => moveProjects(1));
+}
+
 
 
 // ========================= //
@@ -293,10 +355,11 @@ const sections = [
   
 ];
 let currentSection = 0;
-let scroll = false;
 function goToSection(index, instant = false) {
   if (index < 0 || index >= sections.length) return;
+  const previousSection = currentSection;
   currentSection = index;
+  scrollDirection = index > previousSection ? "down" : "up";
   const section = sections[index];
 
   followMouse = (index === 0);
@@ -355,39 +418,28 @@ function goToSection(index, instant = false) {
 
 
 
-let scrollDirection = "down"; // haut/bas selon la molette
-
-window.addEventListener("wheel", (event) => {
-  scrollDirection = event.deltaY > 0 ? "down" : "up";
-  if (scroll) return;
-  scroll = true;
-
-  goToSection(currentSection + (scrollDirection === "down" ? 1 : -1));
-
-  setTimeout(() => {
-    scroll = false;
-  }, 1600);
-});
-
-// scroll avec la molette 
-window.addEventListener("wheel", (event) => {
-  if (scroll) return;
-  scroll = true;
-
-  const direction = event.deltaY > 0 ? 1 : -1;
-  goToSection(currentSection + direction);
-
-  setTimeout(() => {
-    scroll = false;
-  }, 1600);
-});
-
-
-
+let scrollDirection = "down";
 
 const presentation = document.getElementById("presentation-section");
 const skillsSection = document.querySelector(".skills-section");
 const formationSection = document.getElementById("section-formation");
+
+// La molette fait défiler le contenu de la section active, sans changer de scène.
+window.addEventListener("wheel", (event) => {
+  if (event.ctrlKey) return;
+
+  const scrollableSections = {
+    2: skillsSection,
+    3: projectsSection,
+    4: formationSection,
+    5: contactSection
+  };
+  const activeContainer = scrollableSections[currentSection];
+
+  if (!activeContainer || activeContainer.scrollHeight <= activeContainer.clientHeight) return;
+  event.preventDefault();
+  activeContainer.scrollBy({ top: event.deltaY, behavior: "auto" });
+}, { passive: false });
 
 
 // affichage presentation

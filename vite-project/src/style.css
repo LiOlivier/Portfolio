@@ -631,7 +631,7 @@ Ici on s'occupe de la partie formation
 
 .formation-date {
   font-size: 0.9em;
-  color: #aaa;
+  color: #B99C4B;
   white-space: nowrap;
   margin-top: 3px;
 }
@@ -1000,7 +1000,7 @@ Ici on s'occupe de Contact
 }
 
 
-  #presentation-section {
+  .presentation-section {
     transform: translate(0%, 10%);
     top: 0;
     left: -50%;
@@ -1012,7 +1012,7 @@ Ici on s'occupe de Contact
   }
 
   .presentation-container {
-    position: relative;
+    display: relative;
     flex-direction: column;
     align-items: center;
     padding: 0 20px;
@@ -1265,4 +1265,671 @@ Ici on s'occupe de Contact
 }
 
 
+}
+
+.presentation-container .profile-photo {
+  width: clamp(210px, 20vw, 260px);
+  height: 340px;
+  border-radius: 18px;
+  object-fit: cover;
+  object-position: 50% 34%;
+}
+
+@media (max-width: 768px) {
+  .presentation-container .profile-photo {
+    width: min(220px, 62vw);
+    height: min(300px, 82vw);
+    margin: 0;
+  }
+}
+
+.project-card img.project-logo {
+  padding: 12px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.project-card img.project-logo--4sure {
+  background: #5d1fff;
+}
+
+.project-card img.project-logo--baklabot {
+  background: #F8F3EB;
+}
+
+.project-visual {
+  width: 100%;
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: Lato, sans-serif;
+}
+
+.project-visual strong {
+  color: #fff;
+  font-size: 2rem;
+  letter-spacing: 0.04em;
+}
+
+.project-visual span {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+}
+
+.project-visual--4sure {
+  background: radial-gradient(circle at 25% 25%, #698fe5, transparent 40%), linear-gradient(135deg, #151a3d, #453a8c);
+}
+
+.project-visual--baklabot {
+  background: radial-gradient(circle at 70% 30%, #e8a24c, transparent 35%), linear-gradient(135deg, #492015, #a54c27);
+}
+
+.parcours-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  gap: 28px;
+  align-items: start;
+}
+
+.parcours-column {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  padding-left: 34px;
+}
+
+.parcours-column::before {
+  content: "";
+  position: absolute;
+  top: 54px;
+  bottom: 18px;
+  left: 12px;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.parcours-column-title {
+  margin: 0 0 2px;
+  color: #b99c4b;
+  font-family: Lato, sans-serif;
+  font-size: 1.35rem;
+}
+
+.parcours-column .formation {
+  width: 100%;
+  margin: 0;
+  position: relative;
+}
+
+.parcours-column .formation::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 31px;
+  left: -29px;
+  width: 14px;
+  height: 14px;
+  border: 3px solid #b99c4b;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 4px #1c1c1c;
+}
+
+.parcours-column .formation-logo {
+  flex: 0 0 76px;
+  width: 76px;
+}
+
+.parcours-column .formation-logo img {
+  width: 76px;
+  height: 76px;
+  padding: 4px;
+  background: #fff;
+  object-fit: contain;
+}
+
+.parcours-column .formation-date {
+  display: inline-flex;
+  align-self: flex-start;
+  margin: 2px 0 4px;
+  padding: 4px 9px;
+  border: 1px solid rgba(185, 156, 75, 0.5);
+  border-radius: 999px;
+  background: rgba(185, 156, 75, 0.1);
+  color: #b99c4b;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+/* Barre de défilement visible pour les sections longues. */
+.skills-section,
+#projects-section,
+#section-formation,
+#section-contact {
+  scrollbar-width: thin;
+  scrollbar-color: #b99c4b rgba(255, 255, 255, 0.08);
+}
+
+.skills-section::-webkit-scrollbar,
+#projects-section::-webkit-scrollbar,
+#section-formation::-webkit-scrollbar,
+#section-contact::-webkit-scrollbar {
+  width: 10px;
+}
+
+.skills-section::-webkit-scrollbar-thumb,
+#projects-section::-webkit-scrollbar-thumb,
+#section-formation::-webkit-scrollbar-thumb,
+#section-contact::-webkit-scrollbar-thumb {
+  background: #b99c4b;
+  border: 2px solid #1c1c1c;
+  border-radius: 999px;
+}
+
+/* Défilement unique de la page : les sections apparaissent à leur arrivée. */
+html:has(body.scroll-portfolio),
+body.scroll-portfolio {
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+
+body.scroll-portfolio canvas {
+  position: fixed;
+}
+
+body.scroll-portfolio #overlay,
+body.scroll-portfolio #presentation-section,
+body.scroll-portfolio .skills-section,
+body.scroll-portfolio #projects-section,
+body.scroll-portfolio #section-formation,
+body.scroll-portfolio #section-contact {
+  position: relative;
+  inset: auto;
+  display: flex;
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  padding: 108px clamp(20px, 6vw, 110px) 56px;
+  box-sizing: border-box;
+  transform: translateY(48px);
+  opacity: 0;
+  pointer-events: none;
+  overflow: visible;
+  scroll-snap-align: start;
+  transition: transform 0.7s ease, opacity 0.7s ease;
+}
+
+body.scroll-portfolio #overlay {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+body.scroll-portfolio #presentation-section,
+body.scroll-portfolio #projects-section,
+body.scroll-portfolio #section-formation,
+body.scroll-portfolio #section-contact {
+  justify-content: center;
+  align-items: center;
+}
+
+body.scroll-portfolio .skills-section,
+body.scroll-portfolio #projects-section,
+body.scroll-portfolio #section-formation {
+  justify-content: flex-start;
+}
+
+body.scroll-portfolio #overlay.enter,
+body.scroll-portfolio #presentation-section.enter,
+body.scroll-portfolio .skills-section.enter,
+body.scroll-portfolio #projects-section.enter,
+body.scroll-portfolio #section-formation.enter,
+body.scroll-portfolio #section-contact.enter {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  body.scroll-portfolio #overlay,
+  body.scroll-portfolio #presentation-section,
+  body.scroll-portfolio .skills-section,
+  body.scroll-portfolio #projects-section,
+  body.scroll-portfolio #section-formation,
+  body.scroll-portfolio #section-contact {
+    min-height: 100dvh;
+    height: auto;
+    padding: 84px 16px 36px;
+    overflow: visible;
+  }
+}
+
+/* Ordre miroir : expériences et formations les plus récentes en haut. */
+.parcours-column-title {
+  order: 0;
+}
+
+.parcours-column:first-child .formation:nth-of-type(1) { order: 5; }
+.parcours-column:first-child .formation:nth-of-type(2) { order: 4; }
+.parcours-column:first-child .formation:nth-of-type(3) { order: 3; }
+.parcours-column:first-child .formation:nth-of-type(4) { order: 2; }
+.parcours-column:first-child .formation:nth-of-type(5) { order: 1; }
+
+.parcours-column:last-child .formation:nth-of-type(1) { order: 3; }
+.parcours-column:last-child .formation:nth-of-type(2) { order: 2; }
+.parcours-column:last-child .formation:nth-of-type(3) { order: 1; }
+
+/* Correctifs de mise en page et galerie de projets */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+#projects-section,
+.skills-section,
+#section-formation,
+#section-contact,
+#presentation-section {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+#projects-section {
+  padding: 96px clamp(16px, 4vw, 56px) 32px;
+  justify-content: flex-start;
+  overflow-y: auto;
+}
+
+.projects-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 12px 0 24px;
+}
+
+.projects-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.auto-scroll {
+  width: max-content;
+  max-height: none;
+  display: flex !important;
+  flex-direction: row;
+  flex-wrap: nowrap !important;
+  gap: 18px;
+  animation: none;
+}
+
+.project-card {
+  width: clamp(260px, 30vw, 340px);
+  min-width: 260px;
+  scroll-snap-align: start;
+  padding-bottom: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.project-card:focus-visible,
+.project-card.is-selected {
+  border-color: #b99c4b;
+  box-shadow: 0 0 0 2px rgba(185, 156, 75, 0.35);
+}
+
+.project-card.is-selected {
+  background-color: rgba(185, 156, 75, 0.12);
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+}
+
+.project-carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 auto 10px;
+}
+
+.project-carousel-controls button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #b99c4b;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.25);
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.25rem;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.project-carousel-controls button:hover,
+.project-carousel-controls button:focus-visible {
+  background: #b99c4b;
+  transform: scale(1.06);
+}
+
+.skills-section {
+  padding: 92px clamp(16px, 7vw, 120px) 32px;
+  overflow-y: auto;
+}
+
+#section-formation {
+  top: 0;
+  left: 0;
+  padding: 96px clamp(16px, 8vw, 160px) 32px;
+  overflow-y: auto;
+}
+
+#section-contact {
+  left: 0;
+  padding: 96px clamp(16px, 8vw, 120px) 32px;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  html, body {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .side-nav {
+    top: 12px;
+    left: 50%;
+    gap: 5px;
+    max-width: calc(100vw - 88px);
+  }
+
+  .side-nav button {
+    width: 34px;
+    height: 34px;
+    padding: 7px;
+  }
+
+  .cv-floating-button {
+    top: 12px;
+    right: 12px;
+  }
+
+  #overlay h1 {
+    font-size: clamp(1.8rem, 8vw, 3rem);
+    padding-inline: 18px;
+  }
+
+  #presentation-section {
+    padding: 88px 20px 28px;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+
+  .presentation-container {
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 22px;
+    text-align: center;
+  }
+
+  .presentation-container img {
+    width: min(180px, 48vw);
+    height: min(180px, 48vw);
+    position: static;
+    margin: 0;
+  }
+
+  .presentation-texte,
+  .presentation-texte p {
+    position: static;
+    width: 100%;
+    max-width: 34rem;
+    margin-inline: auto;
+    text-align: left;
+    font-size: 1rem;
+  }
+
+  .skills-section h2,
+  #projects-section h2 {
+    margin: 0 0 18px;
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .skills-grid {
+    gap: 10px;
+  }
+
+  .skill-card {
+    width: 86px;
+  }
+
+  .formation {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .formation.reverse {
+    flex-direction: column;
+  }
+
+  .formation-logo img {
+    width: 72px;
+    height: 72px;
+  }
+
+  .contact-wrapper {
+    flex-direction: column;
+    gap: 22px;
+    padding: 20px;
+  }
+
+  .contact-info {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 500px) {
+  #projects-section {
+    padding-top: 84px;
+  }
+
+  .project-card {
+    width: 100%;
+    min-width: 100%;
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+  }
+
+  .auto-scroll {
+    width: 100%;
+    gap: 0;
+  }
+
+  .project-carousel-controls {
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+
+  .project-carousel-controls button {
+    width: 44px;
+    height: 44px;
+  }
+
+  .project-card img {
+    aspect-ratio: 16 / 9;
+    height: min(52vw, 220px);
+    max-height: none;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .skills-section {
+    padding-top: 84px;
+  }
+
+  .skill-card {
+    width: 76px;
+  }
+
+  .contact-info ul li {
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Compétences et parcours : mise en page téléphone */
+@media (max-width: 768px) {
+  .skills-section,
+  #section-formation {
+    height: 100dvh;
+    min-height: 100dvh;
+    padding: 84px 16px 24px;
+    justify-content: flex-start;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .skills-section h2,
+  .formation-container h2 {
+    width: 100%;
+    margin: 0 0 16px;
+    text-align: center;
+    font-size: clamp(2rem, 9vw, 2.75rem);
+  }
+
+  .skills-header {
+    width: 100%;
+    gap: 7px;
+    margin-bottom: 16px;
+  }
+
+  .filter-button {
+    padding: 7px 10px;
+    font-size: 0.72rem;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    max-width: 430px;
+    gap: 10px;
+    padding-bottom: 24px;
+  }
+
+  .skill-card {
+    width: auto;
+    min-height: 86px;
+    padding: 10px 4px;
+  }
+
+  .skill-card img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .skill-card p {
+    font-size: 0.72rem;
+    overflow-wrap: anywhere;
+  }
+
+  .skill-card .learn-more {
+    display: none;
+  }
+
+  .formation-container {
+    width: 100%;
+    max-width: 430px;
+    padding-bottom: 24px;
+  }
+
+  .parcours-columns {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .parcours-column {
+    gap: 12px;
+    padding-left: 28px;
+  }
+
+  .parcours-column::before {
+    left: 10px;
+  }
+
+  .parcours-column .formation::before {
+    left: -25px;
+  }
+
+  .parcours-column-title {
+    text-align: center;
+    font-size: 1.2rem;
+  }
+
+  .formation,
+  .formation.reverse {
+    width: 100%;
+    margin: 0 0 14px;
+    padding: 16px;
+    position: static;
+    left: auto;
+    transform: none;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .formation-logo {
+    flex: 0 0 78px;
+    width: 78px;
+    order: 0;
+  }
+
+  .formation-logo img {
+    display: block;
+    width: 78px;
+    height: 78px;
+    padding: 3px;
+    background: rgba(255, 255, 255, 0.08);
+    object-fit: contain;
+  }
+
+  .formation-content {
+    min-width: 0;
+    order: 1;
+  }
+
+  .formation h3 {
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+
+  .formation p {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  .formation-date {
+    font-size: 0.8rem;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 360px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }

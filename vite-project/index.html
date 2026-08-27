@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Portfolio Solaire</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <link rel="stylesheet" href="/src/style.css">
 </head>
 <body>
@@ -13,53 +12,45 @@
     <h1>Bienvenue sur mon Portfolio !</h1>
   </div>
 
-<a href="/CV_LI_Olivier.pdf" download class="cv-floating-button" title="Télécharger mon CV">
-  <img src="public/icons/download.svg" alt="Download">
+<a href="/icons/LI Olivier.pdf" download="LI Olivier.pdf" class="cv-floating-button" title="Télécharger mon CV">
+  <img src="/icons/download.svg" alt="Download">
   <span>Télécharger mon CV</span>
 </a>
 
 <nav class="side-nav">
   <button onclick="goToSection(0, true)" title="Accueil">
-    <img src="public/icons/accueil.svg" alt="Accueil">
+    <img src="/icons/accueil.svg" alt="Accueil">
   </button>
   <button onclick="goToSection(1, true)" title="Présentation">
-    <img src="public/icons/presentation.svg" alt="Présentation">
+    <img src="/icons/presentation.svg" alt="Présentation">
   </button>
   <button onclick="goToSection(2, true)" title="Compétences">
-    <img src="public/icons/skills.svg" alt="Compétences">
+    <img src="/icons/skills.svg" alt="Compétences">
   </button>
   <button onclick="goToSection(3, true)" title="Projets">
-    <img src="public/icons/projets.svg" alt="Projets">
+    <img src="/icons/projets.svg" alt="Projets">
   </button>
   <button onclick="goToSection(4, true)" title="Formation">
-    <img src="public/icons/formation.svg" alt="Formation">
+    <img src="/icons/formation.svg" alt="Formation">
   </button>
   <button onclick="goToSection(5, true)" title="Contact">
-    <img src="public/icons/contact.svg" alt="Contact">
+    <img src="/icons/contact.svg" alt="Contact">
   </button>
 </nav>
 
-
-  <div id="scroll-up" style="display: none;">
-  </div>
-
-  <div id="scroll">
-  </div>  
-
-
   <section id="presentation-section">
     <div class="presentation-container">
-      <img src="public/Etoile/Olivier (1).png" alt="Photo de profil" />
+      <img class="profile-photo" src="/icons/Olivier.png" alt="Portrait d'Olivier Li" />
       <div class="presentation-texte">
         <h2>Salut, moi c'est Olivier !</h2>
         <p>
-C’est en entrant en BUT Informatique que j’ai commencé à m’intéresser sérieusement au développement logiciel. Cette découverte a rapidement éveillé ma curiosité, et depuis, je continue à apprendre de nouveaux langages et à explorer différents aspects du code. En parallèle de ma formation, je m’initie aussi au développement de jeux vidéo et j’aime me lancer dans des projets personnels pour enrichir mes compétences. Toujours en quête de savoir, je prends plaisir à progresser chaque jour dans ce domaine.
+Diplômé du BUT Informatique, je suis actuellement en première année de cycle ingénieur à l'ESIEE Paris. Je m'intéresse particulièrement à l'automatisation et au développement logiciel. J'aime concevoir des solutions fiables, améliorer les processus et explorer de nouvelles technologies à travers des projets concrets. En dehors du code, la photographie, la vidéo et la cinématographie nourrissent ma créativité, tandis que les voyages m'ouvrent à de nouvelles perspectives.
         </p>
       </div>
     </div>
   </section>
 
-  <section class="skills-section">
+  <section id="skills-section" class="skills-section">
 
     <h2>Compétences</h2>
 
@@ -75,178 +66,178 @@ C’est en entrant en BUT Informatique que j’ai commencé à m’intéresser s
 
       <!-- ========== LANGAGES ========== -->
       <div class="skill-card languages software">
-        <img src="public/Skills/Langages/c.svg" alt="C">
+<img src="/Skills/Langages/c.svg" alt="C">
         <p>C</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/C_(langage)" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <div class="skill-card languages web">
-        <img src="public/Skills/Langages/js.svg" alt="JavaScript">
+<img src="/Skills/Langages/js.svg" alt="JavaScript">
         <p>JavaScript</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/JavaScript" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <div class="skill-card languages web software">
-        <img src="public/Skills/Langages/php.svg" alt="PHP">
+<img src="/Skills/Langages/php.svg" alt="PHP">
         <p>PHP</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/PHP" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <div class="skill-card languages software">
-        <img src="public/Skills/Langages/python.svg" alt="Python">
+<img src="/Skills/Langages/python.svg" alt="Python">
         <p>Python</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/Python_(langage)" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <div class="skill-card languages software">
-        <img src="public/Skills/Langages/java.svg" alt="Java">
+<img src="/Skills/Langages/java.svg" alt="Java">
         <p>Java</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/Java_(langage)" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <!-- ========== FRONT-END ========== -->
       <div class="skill-card languages web">
-        <img src="public/Skills/Front-end/html.svg" alt="HTML">
+<img src="/Skills/Front-end/html.svg" alt="HTML">
         <p>HTML</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/HyperText_Markup_Language" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <div class="skill-card web">
-        <img src="public/Skills/Front-end/css3.svg" alt="CSS3">
+<img src="/Skills/Front-end/css3.svg" alt="CSS3">
         <p>CSS3</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <div class="skill-card software web">
-        <img src="public/Skills/Front-end/react.svg" alt="React">
+<img src="/Skills/Front-end/react.svg" alt="React">
         <p>React</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/React_(biblioth%C3%A8que_JavaScript)" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
       
       <div class="skill-card web">
-        <img src="public/Skills/Front-end/threejs.svg" alt="Three.js">
+<img src="/Skills/Front-end/threejs.svg" alt="Three.js">
         <p>Three.js</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/Three.js" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <div class="skill-card web languages">
-        <img src="public/Skills/Front-end/jquery.svg" alt="jQuery">
+<img src="/Skills/Front-end/jquery.svg" alt="jQuery">
         <p>jQuery</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/JQuery" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <div class="skill-card web tools">
-        <img src="public/Skills/Front-end/elementor.svg" alt="Elementor">
+<img src="/Skills/Front-end/elementor.svg" alt="Elementor">
         <p>Elementor</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/Elementor" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <!-- ========== BACK-END ========== -->
       <div class="skill-card web software">
-        <img src="public/Skills/Back-end/mongodb.svg" alt="MongoDB">
+<img src="/Skills/Back-end/mongodb.svg" alt="MongoDB">
         <p>MongoDB</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/MongoDB" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <div class="skill-card web software">
-        <img src="public/Skills/Back-end/mysql.svg" alt="MySQL">
+<img src="/Skills/Back-end/mysql.svg" alt="MySQL">
         <p>MySQL</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/MySQL" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <div class="skill-card software web">
-        <img src="public/Skills/Back-end/nodejs.svg" alt="Node.js">
+<img src="/Skills/Back-end/nodejs.svg" alt="Node.js">
         <p>Node.js</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/Node.js" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <div class="skill-card web software">
-        <img src="public/Skills/Back-end/phpmyadmin-icon.svg" alt="phpMyAdmin">
+<img src="/Skills/Back-end/phpmyadmin-icon.svg" alt="phpMyAdmin">
         <p>phpMyAdmin</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/PhpMyAdmin" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <div class="skill-card software">
-        <img src="public/Skills/Back-end/postgresql.svg" alt="PostgreSQL">
+<img src="/Skills/Back-end/postgresql.svg" alt="PostgreSQL">
         <p>PostgreSQL</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/PostgreSQL" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <div class="skill-card web software">
-        <img src="public/Skills/Back-end/sql.svg" alt="SQL">
+<img src="/Skills/Back-end/sql.svg" alt="SQL">
         <p>SQL</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/Structured_Query_Language" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <div class="skill-card software">
-        <img src="public/Skills/Back-end/mariadb.svg" alt="MariaDB">
+<img src="/Skills/Back-end/mariadb.svg" alt="MariaDB">
         <p>MariaDB</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/MariaDB" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <!-- ========== OUTILS & ENVIRONNEMENTS ========== -->
       <div class="skill-card tools">
-        <img src="public/Skills/Outils & Environnements/AndroidStudio.svg" alt="Android Studio">
+<img src="/Skills/Outils & Environnements/AndroidStudio.svg" alt="Android Studio">
         <p>Android Studio</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/Android_Studio" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <div class="skill-card tools">
-        <img src="public/Skills/Outils & Environnements/github.svg" alt="GitHub">
+<img src="/Skills/Outils & Environnements/github.svg" alt="GitHub">
         <p>GitHub</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/GitHub" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <div class="skill-card tools">
-        <img src="public/Skills/Outils & Environnements/gitlab.svg" alt="GitLab">
+<img src="/Skills/Outils & Environnements/gitlab.svg" alt="GitLab">
         <p>GitLab</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/GitLab" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <div class="skill-card tools web">
-        <img src="public/Skills/Outils & Environnements/springboot.svg" alt="SpringBoot">
+<img src="/Skills/Outils & Environnements/springboot.svg" alt="SpringBoot">
         <p>Spring Boot</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/SpringBoot" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <div class="skill-card tools">
-        <img src="public/Skills/Outils & Environnements/intellij.svg" alt="IntelliJ">
+<img src="/Skills/Outils & Environnements/intellij.svg" alt="IntelliJ">
         <p>IntelliJ</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/IntelliJ_IDEA" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <div class="skill-card tools">
-        <img src="public/Skills/Outils & Environnements/pgadmin.svg" alt="pgAdmin">
+<img src="/Skills/Outils & Environnements/pgadmin.svg" alt="pgAdmin">
         <p>pgAdmin</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/PgAdmin" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <div class="skill-card tools">
-        <img src="public/Skills/Outils & Environnements/virtualbox.svg" alt="VirtualBox">
+<img src="/Skills/Outils & Environnements/virtualbox.svg" alt="VirtualBox">
         <p>VirtualBox</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/VirtualBox" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <div class="skill-card tools">
-        <img src="public/Skills/Outils & Environnements/vscode.svg" alt="VSCode">
+<img src="/Skills/Outils & Environnements/vscode.svg" alt="VSCode">
         <p>VSCode</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/Visual_Studio_Code" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <div class="skill-card tools web">
-        <img src="public/Skills/Outils & Environnements/wdpress.svg" alt="WordPress">
+<img src="/Skills/Outils & Environnements/wdpress.svg" alt="WordPress">
         <p>WordPress</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/WordPress" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <div class="skill-card tools">
-        <img src="public/Skills/Outils & Environnements/wireshark.svg" alt="Wireshark">
+<img src="/Skills/Outils & Environnements/wireshark.svg" alt="Wireshark">
         <p>Wireshark</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/Wireshark" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
 
       <div class="skill-card tools">
-        <img src="public/Skills/Outils & Environnements/xampp.svg" alt="XAMPP">
+<img src="/Skills/Outils & Environnements/xampp.svg" alt="XAMPP">
         <p>XAMPP</p>
         <a class="learn-more" href="https://fr.wikipedia.org/wiki/XAMPP" target="_blank" rel="noopener noreferrer">En savoir plus ↗</a>
       </div>
@@ -257,11 +248,15 @@ C’est en entrant en BUT Informatique que j’ai commencé à m’intéresser s
 
 <section id="projects-section">
   <h2>Mes projets</h2>
+  <div class="project-carousel-controls" aria-label="Navigation des projets">
+    <button type="button" id="project-previous" aria-label="Projet précédent">←</button>
+    <button type="button" id="project-next" aria-label="Projet suivant">→</button>
+  </div>
   <div class="projects-wrapper">
     <div class="auto-scroll">
       <!-- PROJETS ORIGINAUX -->
       <div class="project-card">
-        <img src="public/Projets/ApplicationStage/image.png" alt="Suivi de Stage">
+<img src="/Projets/ApplicationStage/image.png" alt="Suivi de Stage">
 
         <div class="project-body">
           <h3>Application gestion de stage</h3>
@@ -279,14 +274,14 @@ C’est en entrant en BUT Informatique que j’ai commencé à m’intéresser s
 
           <div class="project-links">
             <a href="https://github.com/LiOlivier/SAE-S3.01" target="_blank" class="github-link">
-              <img src="public/Skills/Outils & Environnements/github.svg" alt="GitHub"> 
+<img src="/Skills/Outils & Environnements/github.svg" alt="GitHub">
             </a>
           </div>
         </div>
       </div>
 
       <div class="project-card">
-        <img src="public/Projets/Portfolio.png" alt="Portfolio 3D">
+<img src="/Projets/Portfolio.png" alt="Portfolio 3D">
 
         <div class="project-body">
           <h3>Portfolio Solaire</h3>
@@ -305,10 +300,10 @@ C’est en entrant en BUT Informatique que j’ai commencé à m’intéresser s
 
           <div class="project-links">
             <a href="https://li-olivier.fr" target="_blank" class="demo-link">
-              <img src="public/Projets/eye.svg" alt="Demo"> Demo
+<img src="/Projets/eye.svg" alt="Demo"> Demo
             </a>
             <a href="https://github.com/LiOlivier/Portfolio" target="_blank" class="github-link">
-              <img src="public/Skills/Outils & Environnements/github.svg" alt="GitHub"> 
+<img src="/Skills/Outils & Environnements/github.svg" alt="GitHub">
             </a>
           </div>
         </div>
@@ -316,7 +311,7 @@ C’est en entrant en BUT Informatique que j’ai commencé à m’intéresser s
 
 
       <div class="project-card">
-        <img src="public/Projets/UML.png" alt="Calculatrice Java">
+<img src="/Projets/UML.png" alt="Calculatrice Java">
 
         <div class="project-body">
           <h3>Calculatrice Java</h3>
@@ -329,14 +324,14 @@ C’est en entrant en BUT Informatique que j’ai commencé à m’intéresser s
 
           <div class="project-links">
             <a href="https://github.com/VongsavanhKevin/SAE-Java" target="_blank" class="github-link">
-              <img src="public/Skills/Outils & Environnements/github.svg" alt="GitHub"> 
+<img src="/Skills/Outils & Environnements/github.svg" alt="GitHub">
             </a>
           </div>
         </div>
       </div>
 
       <div class="project-card">
-        <img src="public/Projets/père noël.jpg" alt="SAE Père Noël">
+<img src="/Projets/père noël.jpg" alt="SAE Père Noël">
 
         <div class="project-body">
           <h3>SAE Père Noël</h3>
@@ -350,7 +345,7 @@ C’est en entrant en BUT Informatique que j’ai commencé à m’intéresser s
 
           <div class="project-links">
             <a href="https://github.com/LiOlivier/SAE-S1.02/blob/main/SAE%20S1.02%20PARTIE%201.ipynb" target="_blank" class="github-link">
-              <img src="public/Skills/Outils & Environnements/github.svg" alt="GitHub"> 
+<img src="/Skills/Outils & Environnements/github.svg" alt="GitHub">
             </a>
           </div>
         </div>
@@ -358,7 +353,7 @@ C’est en entrant en BUT Informatique que j’ai commencé à m’intéresser s
 
 
       <div class="project-card">
-        <img src="public/Projets/4LTrophy.jpg" alt="Recueil de Besoin">
+<img src="/Projets/4LTrophy.jpg" alt="Recueil de Besoin">
 
         <div class="project-body">
           <h3>Recueil de Besoin - 4L Trophy</h3>
@@ -373,14 +368,14 @@ C’est en entrant en BUT Informatique que j’ai commencé à m’intéresser s
 
           <div class="project-links">
             <a href="https://liolivier98.wixsite.com/4l-trophy-adventure" target="_blank" class="demo-link">
-              <img src="public/Projets/eye.svg" alt="Demo"> Demo
+<img src="/Projets/eye.svg" alt="Demo"> Demo
             </a>
           </div>
         </div>
       </div>
 
       <div class="project-card">
-        <img src="public/Projets/vivatech.jpg" alt="Vivatech">
+<img src="/Projets/vivatech.jpg" alt="Vivatech">
 
         <div class="project-body">
           <h3>Site Vivatech</h3>
@@ -395,14 +390,14 @@ C’est en entrant en BUT Informatique que j’ai commencé à m’intéresser s
 
           <div class="project-links">
             <a href="https://inesmarcisz.wixsite.com/vivatech2025" target="_blank" class="demo-link">
-              <img src="public/Projets/eye.svg" alt="Demo"> Demo
+<img src="/Projets/eye.svg" alt="Demo"> Demo
             </a>
           </div>
         </div>
       </div>
 
       <div class="project-card">
-        <img src="public/Projets/BD.png" alt="SAE BD">
+<img src="/Projets/BD.png" alt="SAE BD">
 
         <div class="project-body">
           <h3>SAE - Création d’une base de données</h3>
@@ -418,7 +413,39 @@ C’est en entrant en BUT Informatique que j’ai commencé à m’intéresser s
 
           <div class="project-links">
             <a href="https://github.com/LiOlivier/S1.04-Creation_BD" target="_blank" class="github-link">
-              <img src="public/Skills/Outils & Environnements/github.svg" alt="GitHub"> 
+<img src="/Skills/Outils & Environnements/github.svg" alt="GitHub">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img class="project-logo project-logo--4sure" src="/icons/4sure.png" alt="Logo 4Sure">
+        <div class="project-body">
+          <h3>SAE 5 – 4Sure</h3>
+          <p>Application mobile utilisant le deep learning pour prédire certaines caractéristiques.</p>
+          <div class="project-tags">
+            <span>Mobile</span><span>IA</span><span>Deep Learning</span><span>Android</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/NoWauu/4Sure" target="_blank" rel="noopener noreferrer" class="github-link">
+              <img src="/Skills/Outils & Environnements/github.svg" alt="GitHub">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img class="project-logo project-logo--baklabot" src="/icons/Baklabot.png" alt="Logo Baklabot">
+        <div class="project-body">
+          <h3>SAE 6 – Baklabot</h3>
+          <p>Chatbot de recettes turques avec interface web, historique des conversations et profils utilisateurs.</p>
+          <div class="project-tags">
+            <span>Chatbot</span><span>Web</span><span>Frontend</span><span>Backend</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/NoWauu/chatbot-turkish-recipes" target="_blank" rel="noopener noreferrer" class="github-link">
+              <img src="/Skills/Outils & Environnements/github.svg" alt="GitHub">
             </a>
           </div>
         </div>
@@ -426,7 +453,7 @@ C’est en entrant en BUT Informatique que j’ai commencé à m’intéresser s
 
       <!-- PROJETS DUPLIQUEE-->
       <div class="project-card">
-        <img src="public/Projets/ApplicationStage/image.png" alt="Suivi de Stage">
+<img src="/Projets/ApplicationStage/image.png" alt="Suivi de Stage">
 
         <div class="project-body">
           <h3>Application gestion de stage</h3>
@@ -444,17 +471,17 @@ C’est en entrant en BUT Informatique que j’ai commencé à m’intéresser s
 
           <div class="project-links">
             <a href="https://li-olivier.fr" target="_blank" class="demo-link">
-              <img src="public/Projets/eye.svg" alt="Demo"> Demo
+<img src="/Projets/eye.svg" alt="Demo"> Demo
             </a>
             <a href="https://github.com/LiOlivier/SAE-S3.01" target="_blank" class="github-link">
-              <img src="public/Skills/Outils & Environnements/github.svg" alt="GitHub"> 
+<img src="/Skills/Outils & Environnements/github.svg" alt="GitHub">
             </a>
           </div>
         </div>
       </div>
 
       <div class="project-card">
-        <img src="public/Projets/Portfolio.png" alt="Portfolio 3D">
+<img src="/Projets/Portfolio.png" alt="Portfolio 3D">
 
         <div class="project-body">
           <h3>Portfolio Solaire</h3>
@@ -473,10 +500,10 @@ C’est en entrant en BUT Informatique que j’ai commencé à m’intéresser s
 
           <div class="project-links">
             <a href="https://li-olivier.fr" target="_blank" class="demo-link">
-              <img src="public/Projets/eye.svg" alt="Demo"> Demo
+<img src="/Projets/eye.svg" alt="Demo"> Demo
             </a>
             <a href="https://github.com/LiOlivier/Portfolio" target="_blank" class="github-link">
-              <img src="public/Skills/Outils & Environnements/github.svg" alt="GitHub"> 
+<img src="/Skills/Outils & Environnements/github.svg" alt="GitHub">
             </a>
           </div>
         </div>
@@ -484,7 +511,7 @@ C’est en entrant en BUT Informatique que j’ai commencé à m’intéresser s
 
 
       <div class="project-card">
-        <img src="public/Projets/UML.png" alt="Calculatrice Java">
+<img src="/Projets/UML.png" alt="Calculatrice Java">
 
         <div class="project-body">
           <h3>Calculatrice Java</h3>
@@ -497,14 +524,14 @@ C’est en entrant en BUT Informatique que j’ai commencé à m’intéresser s
 
           <div class="project-links">
             <a href="https://github.com/VongsavanhKevin/SAE-Java" target="_blank" class="github-link">
-              <img src="public/Skills/Outils & Environnements/github.svg" alt="GitHub"> 
+<img src="/Skills/Outils & Environnements/github.svg" alt="GitHub">
             </a>
           </div>
         </div>
       </div>
 
       <div class="project-card">
-        <img src="public/Projets/père noël.jpg" alt="SAE Père Noël">
+<img src="/Projets/père noël.jpg" alt="SAE Père Noël">
 
         <div class="project-body">
           <h3>SAE Père Noël</h3>
@@ -518,7 +545,7 @@ C’est en entrant en BUT Informatique que j’ai commencé à m’intéresser s
 
           <div class="project-links">
             <a href="https://github.com/LiOlivier/SAE-S1.02/blob/main/SAE%20S1.02%20PARTIE%201.ipynb" target="_blank" class="github-link">
-              <img src="public/Skills/Outils & Environnements/github.svg" alt="GitHub"> 
+<img src="/Skills/Outils & Environnements/github.svg" alt="GitHub">
             </a>
           </div>
         </div>
@@ -526,7 +553,7 @@ C’est en entrant en BUT Informatique que j’ai commencé à m’intéresser s
 
 
       <div class="project-card">
-        <img src="public/Projets/4LTrophy.jpg" alt="Recueil de Besoin">
+<img src="/Projets/4LTrophy.jpg" alt="Recueil de Besoin">
 
         <div class="project-body">
           <h3>Recueil de Besoin - 4L Trophy</h3>
@@ -541,14 +568,14 @@ C’est en entrant en BUT Informatique que j’ai commencé à m’intéresser s
 
           <div class="project-links">
             <a href="https://liolivier98.wixsite.com/4l-trophy-adventure" target="_blank" class="demo-link">
-              <img src="public/Projets/eye.svg" alt="Demo"> Demo
+<img src="/Projets/eye.svg" alt="Demo"> Demo
             </a>
           </div>
         </div>
       </div>
 
       <div class="project-card">
-        <img src="public/Projets/vivatech.jpg" alt="Vivatech">
+<img src="/Projets/vivatech.jpg" alt="Vivatech">
 
         <div class="project-body">
           <h3>Site Vivatech</h3>
@@ -563,14 +590,14 @@ C’est en entrant en BUT Informatique que j’ai commencé à m’intéresser s
 
           <div class="project-links">
             <a href="https://inesmarcisz.wixsite.com/vivatech2025" target="_blank" class="demo-link">
-              <img src="public/Projets/eye.svg" alt="Demo"> Demo
+<img src="/Projets/eye.svg" alt="Demo"> Demo
             </a>
           </div>
         </div>
       </div>
 
       <div class="project-card">
-        <img src="public/Projets/BD.png" alt="SAE BD">
+<img src="/Projets/BD.png" alt="SAE BD">
 
         <div class="project-body">
           <h3>SAE - Création d’une base de données</h3>
@@ -586,7 +613,7 @@ C’est en entrant en BUT Informatique que j’ai commencé à m’intéresser s
 
           <div class="project-links">
             <a href="https://github.com/LiOlivier/S1.04-Creation_BD" target="_blank" class="github-link">
-              <img src="public/Skills/Outils & Environnements/github.svg" alt="GitHub"> 
+<img src="/Skills/Outils & Environnements/github.svg" alt="GitHub">
             </a>
           </div>
         </div>
@@ -604,42 +631,85 @@ C’est en entrant en BUT Informatique que j’ai commencé à m’intéresser s
     <div class="formation-container">
     <h2>Parcours</h2>
 
-        <div class="formation reverse">
-      <div class="formation-content">
-        <h3>BUT Informatique – IUT de Villetaneuse - 2023 en cours</h3>
-        <p>
-          2ème année validée (Obtention du DUT) ✅<br>
-          Formation polyvalente avec des enseignements en développement (Java, Python, JavaScript), conception d’applications mobiles, réseau, systèmes, base de données (SQL), et langage assembleur. Réalisation de projets en équipe, alliant théorie et mise en pratique.
-        </p>
-      </div>
-      <div class="formation-logo">
-        <img src="public/Formation/uspn.jpg" alt="IUT Villetaneuse">
-      </div>
-    </div>
+    <div class="parcours-columns">
+      <div class="parcours-column">
+        <h3 class="parcours-column-title">Formation</h3>
 
-    <div class="formation">
-      <div class="formation-logo">
-        <img src="public/Formation/SteveGates.jpg" alt="Steve Gates">
-      </div>
-      <div class="formation-content">
-        <h3>Stage Développeur Web - Steve Gates</h3>
-        <span class="formation-date">2025 - 2 mois</span>
-        <p>
-          Stage de 2 mois chez Steve Gates, où j’ai contribué au développement web sur WordPress et Prestashop : création d’un plugin d’export PDF, intégration e-commerce, optimisation SEO. Renforcement de mes compétences techniques et autonomie dans un environnement professionnel.
-        </p>
-      </div>
-    </div>
+        <div class="formation">
+          <div class="formation-logo"><img src="/icons/MA.png" alt="Lycée Michel-Ange"></div>
+          <div class="formation-content">
+            <h3>Baccalauréat général mention Bien – Lycée Michel-Ange</h3>
+            <span class="formation-date">2020 – 2023</span>
+            <p>Parcours général avec des enseignements de spécialité scientifiques.</p>
+          </div>
+        </div>
 
-    <div class="formation">
-      <div class="formation-logo">
-        <img src="public/Formation/michelange.jpg" alt="Lycée Michel-Ange">
+        <div class="formation">
+          <div class="formation-logo"><img src="/icons/IUT-villetaneuse-300x254.webp" alt="IUT de Villetaneuse"></div>
+          <div class="formation-content">
+            <h3>BUT Informatique – IUT de Villetaneuse</h3>
+            <span class="formation-date">2023 – 2026 · BUT obtenu</span>
+            <p>Formation en développement, réseaux, systèmes et bases de données.</p>
+          </div>
+        </div>
+
+        <div class="formation">
+          <div class="formation-logo"><img src="/icons/SteveGates.png" alt="Steve Gates"></div>
+          <div class="formation-content">
+            <h3>Stage Développeur Web – Steve Gates</h3>
+            <span class="formation-date">2025 · 2 mois · BUT 2 Informatique</span>
+            <p>Stage de développement web : WordPress, PrestaShop, création d'un plugin d'export PDF, intégration e-commerce et optimisation SEO.</p>
+          </div>
+        </div>
+
+        <div class="formation">
+          <div class="formation-logo"><img src="/icons/tenexa.jpeg" alt="Tenexa"></div>
+          <div class="formation-content">
+            <h3>Apprentissage – Tenexa</h3>
+            <span class="formation-date">2025 – 2026 · 3ème année de BUT</span>
+            <p>Apprentissage en environnement DevOps, en parallèle de la troisième année de BUT Informatique.</p>
+          </div>
+        </div>
+
+        <div class="formation">
+          <div class="formation-logo"><img src="/icons/Logo-esiee-Paris-UGE.svg.webp" alt="ESIEE Paris"></div>
+          <div class="formation-content">
+            <h3>Cycle ingénieur – ESIEE Paris</h3>
+            <span class="formation-date">2026 – 2029 · Cycle ingénieur · 3 ans</span>
+            <p>Apprenti(e) Informatique – design, architecture et développement, avec une option Géomatique, Logiciel ou Réseau.</p>
+          </div>
+        </div>
       </div>
-      <div class="formation-content">
-        <h3>Baccalauréat général – Lycée Michel-Ange - 2020/2023</h3>
-        <span class="formation-date"></span>
-        <p>
-          Parcours général sur trois ans, avec des enseignements de spécialité scientifiques.
-        </p>
+
+      <div class="parcours-column">
+        <h3 class="parcours-column-title">Expérience professionnelle</h3>
+
+        <div class="formation">
+          <div class="formation-logo"><img src="/icons/Lacoste-Logo.png" alt="Lacoste"></div>
+          <div class="formation-content">
+            <h3>Vendeur polyvalent – Lacoste</h3>
+            <span class="formation-date">Juillet 2024 – Août 2024 · 2 mois</span>
+            <p>Accueil et conseil client, réassort quotidien, tenue de caisse, merchandising et gestion des transactions jusqu'à la clôture.</p>
+          </div>
+        </div>
+
+        <div class="formation">
+          <div class="formation-logo"><img src="/icons/Logo_Carrefour.svg" alt="Carrefour"></div>
+          <div class="formation-content">
+            <h3>Employé de rayon – Carrefour</h3>
+            <span class="formation-date">2025 · Job étudiant</span>
+            <p>Mise en rayon, gestion des stocks et accompagnement des clients.</p>
+          </div>
+        </div>
+
+        <div class="formation">
+          <div class="formation-logo"><img src="/icons/tenexa.jpeg" alt="Tenexa"></div>
+          <div class="formation-content">
+            <h3>Apprenti Ingénieur DevOps – Tenexa</h3>
+            <span class="formation-date">2025 – 2026</span>
+            <p>Exploitation, optimisation et automatisation d'infrastructures IT : GitLab, métriques, supervision, résolution d'incidents et amélioration de la fiabilité des environnements.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -650,14 +720,14 @@ C’est en entrant en BUT Informatique que j’ai commencé à m’intéresser s
     <div class="contact-info">
       <h3>Contact Information</h3>
       <ul>
-        <li><img src="public/icons/localisation.svg" alt=""> Paris, France</li>
-        <li><img src="public/icons/phone.svg" alt=""> +33 7 67 88 75 81</li>
-        <li><img src="public/icons/contact.svg" alt=""> liolivier75@gmail.com</li>
-        <li><img src="public/icons/linkedin.svg" alt=""> <a href="https://www.linkedin.com/in/olivier-li-7a43372b8/">LinkedIn</a></li>
+<li><img src="/icons/localisation.svg" alt=""> Paris, France</li>
+<li><img src="/icons/phone.svg" alt=""> +33 7 67 88 75 81</li>
+<li><img src="/icons/contact.svg" alt=""> liolivier75@gmail.com</li>
+<li><img src="/icons/linkedin.svg" alt=""> <a href="https://www.linkedin.com/in/olivier-li-7a43372b8/">LinkedIn</a></li>
       </ul>
       <div class="contact-socials">
         <a href="https://github.com/LiOlivier" target="_blank" title="GitHub">
-          <img src="public/Skills/Outils & Environnements/github.svg" alt="GitHub">
+<img src="/Skills/Outils & Environnements/github.svg" alt="GitHub">
         </a>
       </div>
     </div>
